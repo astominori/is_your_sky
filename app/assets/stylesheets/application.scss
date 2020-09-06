@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+@import "bootstrap";
+
+ * {
+  box-sizing: border-box;
+}
+
+ html {
+  font-size: 100%;
+  font-family: 'Hiragino Sans', sans-serif;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+
+ a {
+  display: block;
+  text-decoration: none;
+  color: #2d3133;
+  font-size: 14px;
+}
+
+ a:hover {
+  transition: all 0.3s ease;
+  color: #58d2b2;
+}
+
+ .top-page {
+   background: #aa4b6b;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   //background-image: url("/images/sample_top_page.jpg");
+   height: 700px;
+   padding: 150px 0px;
+   //background-size: cover;
+   //background-position: center center;
+ }
+
+ .navbar {
+   opacity: 0.7;
+   top: 0;
+   z-index: 10;
+ }
+
+ .title {
+   color: white;
+ }
