@@ -51,8 +51,40 @@
    opacity: 0.7;
    top: 0;
    z-index: 10;
+   margin-bottom: 10px;
  }
 
  .title {
    color: white;
  }
+
+ .container{
+}
+
+.footer{
+   font-size: 12px;
+   padding-top: 30px;
+   ul{
+     padding-left: 0;
+     > li{
+       display: inline;
+       padding-right: 15px;
+       color: #003569;
+     }
+   }
+   p{
+     color: #999;
+   }
+ }
+
+
+
+ .card-columns {
+   .card {
+    background-color: black;
+    img{
+      opacity: 0.7;    /* カラーフィルタ効果の度合いを指定(※) */
+      display: block;
+    }
+   }
+}
