@@ -1,2 +1,21 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div class="container" style="min-height: 500px;">
+  <div class="container-header">
+    <h1>新規投稿</h1>
+  </div>
+  <%= form_with model: @post do |f| %>
+    <div class="form-group">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, "画像" %>
+      <%= f.file_field :image, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :text, "本文" %>
+      <%= f.text_area :text, class:"form-control", placeholder: "ここに本文を書く" %>
+    </div>
+    <%= f.submit "投稿", class:"btn btn-primary" %>
+  <% end %>
+  <%= link_to "もどる", user_path(current_user.id), class:"cancel-button" %>
+</div>

@@ -40,6 +40,10 @@ gem 'jquery-rails'
 gem 'mini_racer'
 gem 'kaminari'
 gem 'rails-i18n'
+gem "carrierwave"
+gem 'fog-aws'
+gem 'dotenv-rails'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,6 +51,7 @@ group :development, :test do
   gem 'rails-flog', require: 'flog'
   gem 'rspec-rails', '~> 3.8'
   gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
 end
 
 group :development do

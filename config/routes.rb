@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  get 'posts/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  get "login" => "sessions#new"
+  post "login" => "sessions#create"
+  delete "logout" => "sessions#destroy"
+  get "about" => "home#about"
   root 'home#index'
   resources :users
+  resources :posts
 end
