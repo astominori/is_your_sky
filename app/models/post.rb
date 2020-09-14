@@ -24,5 +24,7 @@ class Post < ApplicationRecord
   #carrierWaveの設定。画像の保管
   mount_uploader :image, ImageUploader
   validates :user_id, presence: true
+  validates :image, presence: true
+  validates :title, presence: true
   default_scope -> { order(created_at: :desc) }
 end

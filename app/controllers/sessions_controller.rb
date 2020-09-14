@@ -7,11 +7,10 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       current_user
-      binding.pry
       redirect_to user
     else
-      flash.now[:danger] = "正しいメールアドレス/パスワードを入力してください"
-      render 'home/index'
+      flash[:danger] = "メールアドレス/パスワードが正しくありません"
+      render :new
     end
   end
 

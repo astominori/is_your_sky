@@ -1,5 +1,11 @@
 <div class="container" style="min-height: 500px;">
   <h1>ログイン</h1>
+  <% if flash[:danger] %>
+    <ul class="alert alert-danger">
+        <li><%= flash[:danger] %></li>
+    </ul>
+  <% end %>
+  
   <%= form_for(:session, url:login_path) do |f| %>
     <div class="form-group">
       <%= f.label :email, "メールアドレス" %>

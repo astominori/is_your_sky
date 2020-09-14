@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build
+    @post = current_user.posts.build(flash[:post])
   end
 
   def create
@@ -12,7 +12,10 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿しました"
       redirect_to user_path(current_user)
     else
-      render "new"
+      redirect_back fallback_location: root_path, flash: {
+        post: @post,
+        error_messages: @post.errors.full_messages
+      }
     end
   end
 

@@ -2,6 +2,15 @@
   <div class="container-header">
     <h1>新規投稿</h1>
   </div>
+
+  <% if flash[:error_messages] %>
+    <ul class="alert alert-danger">
+      <% flash[:error_messages].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model: @post do |f| %>
     <div class="form-group">
       <%= f.label :title, "タイトル" %>

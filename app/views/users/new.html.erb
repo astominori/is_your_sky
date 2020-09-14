@@ -1,4 +1,13 @@
 <div class="container" style="min-height: 500px;">
+  <h1>会員登録</h1>
+  <% if flash[:error_messages] %>
+    <ul class="alert alert-danger">
+      <% flash[:error_messages].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model: @user do |f| %>
   <div class="form-group">
     <%= f.label :name, "名前" %>
