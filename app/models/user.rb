@@ -19,7 +19,7 @@ class User < ApplicationRecord
   #carrierWaveの設定。画像の保管
   mount_uploader :avatar, AvatarUploader
   has_secure_password
-  has_many :posts
+  has_many :posts, foreign_key: :user_id, dependent: :destroy
   before_save { self.email = email.downcase }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
