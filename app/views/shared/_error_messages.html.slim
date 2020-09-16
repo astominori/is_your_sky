@@ -1,0 +1,6 @@
+- if flash[:error_messages]
+  - flash[:error_messages].each do |message|
+    .alert.alert-danger
+      ul
+        li
+          = message

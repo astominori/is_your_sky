@@ -1,0 +1,17 @@
+.login
+  .container
+    h1
+      | LOG IN
+    - if flash[:danger]
+      ul.alert.alert-danger
+        li
+          = flash[:danger]
+
+    = form_for(:session, url:login_path) do |f|
+      .form-group
+        = f.label :email, "メールアドレス"
+        = f.email_field :email, class: "form-control"
+      .form-group
+        = f.label :password, "パスワード"
+        = f.password_field :password, class: "form-control"
+      = f.submit "ログイン", class: "btn btn-primary"

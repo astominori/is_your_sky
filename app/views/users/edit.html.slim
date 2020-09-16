@@ -1,0 +1,12 @@
+.container[style="min-height: 500px;"]
+  = form_for @user do |f|
+    .form-group
+      = f.label :avatar, "プロフィール画像"
+      = f.file_field :avatar, class: "form-control", accept: "image/gif,image/jpg,iamge/png"
+    .form-group
+      = f.label :name, "名前"
+      = f.text_field :name, class: "form-control"
+    .form-group
+      = f.label :bio, "プロフィール"
+      = f.text_area :bio, class: "form-control"
+    = f.submit "変更", class: 'btn btn-primary'

@@ -1,0 +1,21 @@
+.container[style="min-height: 500px;"]
+  .container-header
+    h1
+      | 新規投稿
+  - if flash[:error_messages]
+    ul.alert.alert-danger
+      - flash[:error_messages].each do |message|
+        li
+          = message
+  = form_with model: @post do |f|
+    .form-group
+      = f.label :title, "タイトル"
+      = f.text_field :title, class:"form-control"
+    .form-group
+      = f.label :image, "画像"
+      = f.file_field :image, class:"form-control"
+    .form-group
+      = f.label :text, "本文"
+      = f.text_area :text, class:"form-control", placeholder: "ここに本文を書く"
+    = f.submit "投稿", class:"btn btn-primary"
+  = link_to "もどる", user_path(current_user.id), class:"cancel-button"
