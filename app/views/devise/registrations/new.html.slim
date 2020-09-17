@@ -3,10 +3,8 @@
     h1
       | 会員登録
 
-    = render partial:"shared/error_messages"
-
-    = form_with model: resource, as: resource_name, url: registration_path(resource_name) do |f|
-      = render "devise/shared/error_messages", resource: resource
+    = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+      = render partial:"devise/shared/error_messages", resource: resource
 
       .form-group
         = f.label :username, "ユーザネーム"
@@ -30,3 +28,5 @@
       = f.submit "Sign up", class: 'btn btn-primary'
 
 = render "devise/shared/links"
+
+/   = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', locale: true do |f|
