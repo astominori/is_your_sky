@@ -10,6 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ * = require_self
+ * = require_tree
  */
 @import "bootstrap";
 
@@ -19,6 +21,7 @@ body {
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 }
+
 
 /* TOPページ：index.html.slim */
 
@@ -233,6 +236,39 @@ body {
   }
 }
 
+/* mypage画面：mypages/show.html.slim */
+.card-columns {
+  .card {
+   background-color: black;
+   img{
+     opacity: 0.7;    // カラーフィルタ効果の度合いを指定(※)
+     display: block;
+    }
+  }
+}
+
+
+/* footer */
+.footer{
+   font-size: 12px;
+   padding-top: 30px;
+   ul{
+     padding-left: 0;
+     > li{
+       display: inline;
+       padding-right: 15px;
+       color: #003569;
+     }
+   }
+   p{
+     color: #999;
+   }
+ }
+
+ .container{
+   width: 40%;
+   margin: 0 auto;
+ }
 
 /* 一度作り直してみる
  * {

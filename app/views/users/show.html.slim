@@ -3,7 +3,7 @@
     .col-md-3
       .card[style="width: 18rem;"]
         - if @user.avatar?
-          = image_tag @user.avatar.url, class:"bd-placeholder-img card-img-top", width:"100%", height:"180"
+          = image_tag @user.avatar.avatar_size.url, class:"bd-placeholder-img card-img-top", width:"100%", height:"180"
         - else
           svg.bd-placeholder-img.card-img-top[width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"]
             title

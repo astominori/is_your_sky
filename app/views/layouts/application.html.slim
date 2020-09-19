@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | IS_YOUR_SKY
+      = yield :title || "IS YOUR SKY"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags
     = csp_meta_tag
@@ -13,9 +13,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = render partial: "home/header"
+
     = yield
-    = render partial: "home/footer"
 
     = javascript_include_tag "https://unpkg.com/swiper/swiper-bundle.min.js"
 
