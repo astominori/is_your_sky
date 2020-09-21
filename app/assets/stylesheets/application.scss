@@ -109,7 +109,7 @@ body {
   }
 }
 
-/* login画面：session/new.html.slim */
+/* login画面：devise/session/new.html.slim */
 
 //背景画像の設定
 .login{
@@ -125,7 +125,7 @@ body {
   //透明な箱を用意する
   .container{
     width: 50%;
-    height: 70%;
+    min-height: 70%;
     background-color: rgba(54, 54, 54, 0.6);
     display: flex;
     justify-content: center;
@@ -159,7 +159,7 @@ body {
   }
 }
 
-/* 会員登録画面：users/new.html.slim */
+/* 会員登録画面：devise/registration/new.html.slim */
 
 //背景画像の設定
 .signup{
@@ -175,7 +175,7 @@ body {
   //透明な箱を用意する
   .container{
     width: 50%;
-    height: 90%;
+    min-height: 90%;
     background-color: rgba(54, 54, 54, 0.6);
     display: flex;
     justify-content: center;

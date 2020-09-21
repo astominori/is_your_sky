@@ -1,9 +1,11 @@
+= render partial: "shared/header"
 .login
   .container
     h1
       | Log in
 
     = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      = render partial:"devise/shared/error_messages", resource: resource
 
       .form-group
         = f.label :email
@@ -20,4 +22,6 @@
 
       = f.submit "Log in", class: 'btn btn-primary'
 
-= render "devise/shared/links"
+    = render "devise/shared/links"
+
+= render partial: "shared/footer"
