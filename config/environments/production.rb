@@ -64,7 +64,6 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "app_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -91,4 +90,21 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => 'https://enigmatic-hollows-71751.herokuapp.com/' }
+  #送信方法を指定（この他に:sendmail/:file/:testなどがあります)
+  config.action_mailer.delivery_method = :smtp
+  #送信方法として:smtpを指定した場合は、このconfigを使って送信詳細の設定を行います
+  config.action_mailer.smtp_settings = {
+    #gmail利用時はaddress,domain,portは下記で固定
+    address:"smtp.gmail.com",
+    domain: 'gmail.com',
+    port:587,
+    #gmailのユーザアカウント（xxxx@gmail.com)※念のため、credentials.yml.enc行き
+    user_name: ENV['GMAIL_ADDRESS'],
+    #gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得、必ずcredentials.yml.endに設定を！！
+    password: ENV['GMAIL_PASSWORD'],
+    #パスワードをBase64でエンコード
+    authentication: :login
+  }
 end
