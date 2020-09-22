@@ -36,19 +36,27 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+#css実装、bootstrap,jquery
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'mini_racer'
+#pagination実装、kaminari
 gem 'kaminari'
+#日本語化 i18n
 gem 'rails-i18n'
+#画像操作 carrierwave
 gem "carrierwave"
+#画像をAWS S3にいれる fog-aws
 gem 'fog-aws'
+#環境変数の設定 doten-rails
 gem 'dotenv-rails'
+#テストケースの作成 faker
 gem 'faker'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'devise'
 gem 'mini_magick'
+gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -16,10 +16,12 @@
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
 #  locked_at              :datetime
+#  provider               :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
 #  sign_in_count          :integer          default(0), not null
+#  uid                    :string(255)
 #  unconfirmed_email      :string(255)
 #  unlock_token           :string(255)
 #  username               :string(255)

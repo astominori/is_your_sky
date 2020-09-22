@@ -1,10 +1,10 @@
-- provide :title, "mypage - #{@user.name}"
+- provide :title, "mypage - #{@user.username}"
 .mypage-container
   = render partial: "user_bio", locals: { user: @user }
 
   section.time-line
     .sub-container
-      - if @user_posts
+      - if @user_posts.any?
         - @user_posts.each do |post|
           article
             .create-date
@@ -45,55 +45,3 @@
             - posts.each do |post|
               - if post.user_id != @user.id
                 = image_tag post.image.url, class:"thumb"
-
-
-
-/.row
-  .col-md-3
-    .card[style="width: 18rem;"]
-      - if @user.avatar?
-        = image_tag @user.avatar.url, class:"bd-placeholder-img card-img-top", width:"100%", height:"180"
-      - else
-        svg.bd-placeholder-img.card-img-top[width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"]
-          title
-            | Placeholder
-          rect[fill="#868e96" width="100%" height="100%"]
-          text[fill="#dee2e6" dy=".3em" x="50%" y="50%"]
-            | Image cap
-      .card-body
-        h5.card-title
-          | #{@user.username}
-        p.card-text
-          | #{@user.bio}
-      ul.list-group.list-group-flush
-        li.list-group-item
-          = link_to "新規投稿", new_post_path
-        li.list-group-item
-          | フォローユーザ
-        li.list-group-item
-          | フォロワーユーザ
-        li.list-group-item
-          = link_to "設定", edit_user_registration_path(@user)
-
-
-  .col-md-9
-    .card-columns
-      - if @posts
-        - @posts.each do |post|
-          .card.bg-dark.text-white
-            - if post.image
-              = image_tag post.image.url, class:"card-img", alt:"Card image"
-            - else
-              svg.bd-placeholder-img.card-img-top[width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"]
-                title
-                  | Placeholder
-                rect[fill="#868e96" width="100%" height="100%"]
-                text[fill="#dee2e6" dy=".3em" x="50%" y="50%"]
-                  | Image cap
-            .card-img-overlay
-              h5.card-title
-                = post.title
-              p.card-text
-                = simple_format(post.text)
-      - else
-        = link_to "新規投稿はこちら", new_post_path
