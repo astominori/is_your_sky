@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get "/mypages", to: "mypages#show", as: :user_root
   resources :posts
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
