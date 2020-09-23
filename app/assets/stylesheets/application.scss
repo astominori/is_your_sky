@@ -299,13 +299,75 @@ a {
   }
 }
 
-/* mypage画面：mypages/show.html.slim */
-.card-columns {
-  .card {
-   background-color: black;
-   img{
-     opacity: 0.7;    // カラーフィルタ効果の度合いを指定(※)
-     display: block;
+/* パスワード再設定画面：devise/passwords/new.html.slim */
+.password{
+  background-image: url("top-image3.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 93vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  //透明な箱を用意する
+  .container{
+    width: 50%;
+    min-height: 60%;
+    background-color: rgba(54, 54, 54, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px;
+
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 100;
+      color: white;
+    }
+
+    form {
+      width: 60%;
+
+      label {
+        font-size: 14px;
+        font-weight: 100;
+        letter-spacing: 1.7px;
+        color: white;
+      }
+
+      i {
+        font-size: 14px;
+        font-weight: 100;
+        letter-spacing: 1.7px;
+        color: white;
+      }
+
+      .btn {
+        margin-top: 10px;
+        width: 100%;
+        opacity: 0.8;
+      }
+    }
+
+    .link {
+      width: 60%;
+      margin: 0 auto;
+      padding-bottom: 10px;
+
+      a {
+        font-weight: 100;
+        text-align: left;
+      }
+
+      button {
+        margin: 10px 0px;
+      }
+
+      .fab {
+        margin-right: 10px;
+      }
     }
   }
 }

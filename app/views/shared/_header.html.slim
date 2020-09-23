@@ -4,9 +4,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     span.navbar-toggler-icon
   #navbarNav.collapse.navbar-collapse
     ul.navbar-nav
-      li.nav-item
+      li class="nav-item #{"active" if controller.action_name == "index" }"
         = link_to "Home", root_path, class:"nav-link"
-      li.nav-item
+      li class="nav-item #{"active" if controller.action_name == "about" }"
         = link_to "About", about_path, class:"nav-link"
       - if user_signed_in?
         li.nav-item
@@ -14,7 +14,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         li.nav-item
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link"
       - else
-        li.nav-item
+        li class="nav-item #{"active" if controller.controller_name == "registrations" }"
           = link_to "会員登録", new_user_registration_path, class:"nav-link"
-        li.nav-item
+        li class="nav-item #{"active" if controller.controller_name == "sessions" }"
           = link_to "ログイン", new_user_session_path, class:"nav-link"

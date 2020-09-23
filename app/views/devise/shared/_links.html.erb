@@ -22,7 +22,7 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= link_to omniauth_authorize_path(resource_name, provider) do %>
       <button type="button" class="btn btn-primary btn-xs " data_but="btn-xs">
-      <i class="fab fa-facebook-f"></i><%= "Sign in with #{OmniAuth::Utils.camelize(provider)}" %>
+      <i class="<%= "fab fa-#{OmniAuth::Utils.camelize(provider.to_s, false)}" %>"></i><%= "Sign in with #{OmniAuth::Utils.camelize(provider)}" %>
       </button>
     <% end %>
   <% end %>
