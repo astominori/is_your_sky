@@ -2,7 +2,7 @@ section.sub-menu
   .sub-container
     = link_to user_root_path, class:"avater" do
       - if user.avatar?
-        = image_tag user.avatar.url, class:"bd-placeholder-img card-img-top", width:"100%", height:"180"
+        = image_tag user.avatar.url
       - else
         = image_tag "avatar-default.png"
     h3

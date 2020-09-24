@@ -26,6 +26,15 @@ a {
   color: white;
 }
 
+/* flashメッセージ：shared/_flash.html.slim */
+//flashメッセージを上部に浮かせて表示する。
+.alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+}
 
 /* TOPページ：index.html.slim */
 
@@ -372,6 +381,16 @@ a {
   }
 }
 
+/* ユーザ情報編集画面：devise/registrations/edit.html.slim */
+
+.circle-avatar img {
+  margin-top: 20px;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 1px solid black;
+  object-fit: cover;
+}
 
 /* footer */
 .footer{
