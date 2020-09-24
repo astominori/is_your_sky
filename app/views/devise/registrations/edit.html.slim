@@ -2,10 +2,26 @@
 .container
   .container-header
     h2
-      | 設定変更
+      | ユーザ情報変更
 
   = form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put } do |f|
     = render "devise/shared/error_messages", resource: resource
+
+    .circle-avatar
+        img id="avatar_img_prev" src="#" class='hidden'
+      - if current_user.avatar?
+        = image_tag current_user.avatar.url, class: 'avatar_present_img'
+        label
+          = f.check_box :remove_avatar
+          | プロフィール画像を削除
+      - else
+        = image_tag "avatar-default.png", class: 'avatar_present_img'
+        = f.hidden_field :avatar_cache
+
+
+    .form-group
+      = f.label :avatar
+      = f.file_field :avatar, accept: "image/gif,image/jpg,iamge/png", autocomplete: "avatar", class:"form-control"
 
     .form-group
       = f.label :username
@@ -14,10 +30,6 @@
     .form-group
       = f.label :bio
       = f.text_area :bio, rows: 5, autocomplete: "bio", class:"form-control"
-
-    .form-group
-      = f.label :avatar
-      = f.file_field :avatar, accept: "image/gif,image/jpg,iamge/png", autocomplete: "avatar", class:"form-control"
 
     .form-group
       = f.label :email
@@ -54,3 +66,24 @@
   p
     | ユーザデータを全て削除したい場合は
     = link_to "こちら", registration_path(resource_name), data: { confirm: "ユーザを削除してよろしいですか？" }, method: :delete
+
+
+javascript:
+  $( document ).on('turbolinks:load', function() {
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#avatar_img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#post_img").change(function(){
+      $('#avatar_img_prev').removeClass('hidden');
+      $('.avatar_present_img').remove();
+      readURL(this);
+    });
+  });
