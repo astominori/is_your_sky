@@ -18,27 +18,32 @@
     .image-preview
       img id="image_img_prev" src="#" class='hidden'
 
+    #post-tags-field
+      = f.label "タグ"
+      ul[id="post-tags"]
+      = hidden_field_tag :tag_hidden, @tag_list
+
     .form-group
       = f.label :text, "本文"
       = f.text_area :text, class:"form-control", placeholder: "ここに本文を書く"
     = f.submit "投稿", class:"btn btn-primary"
   = link_to "もどる", user_root_path, class:"cancel-button"
 
-  javascript:
-    $( document ).on('turbolinks:load', function() {
-      function readURL(input) {
-        if (input.files && input.files[0]) {
-          var reader = new FileReader();
+javascript:
+  $( document ).on('turbolinks:load', function() {
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-          reader.onload = function (e) {
-            $('#image_img_prev').attr('src', e.target.result);
-          }
-          reader.readAsDataURL(input.files[0]);
+        reader.onload = function (e) {
+          $('#image_img_prev').attr('src', e.target.result);
         }
+        reader.readAsDataURL(input.files[0]);
       }
+    }
 
-      $("#post_img").change(function(){
-        $('#image_img_prev').removeClass('hidden');
-        readURL(this);
-      });
+    $("#post_img").change(function(){
+      $('#image_img_prev').removeClass('hidden');
+      readURL(this);
     });
+  });

@@ -14,7 +14,9 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    tag_list = params[:tag_list].split(",")
     if @post.save
+      @post.save_tags(tag_list)
       flash[:notice] = "投稿しました"
       redirect_to user_root_path
     else
@@ -26,10 +28,14 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @tag_list = @post.tags.pluck(:tag).join(",")
   end
 
   def update
+    tags = params[:tag_list].split(",")
     if @post.update(post_params)
+      @post.save_tags(tags)
+      flash[:notice] = "更新が完了しました"
       redirect_to user_root_path
     else
       redirect_back fallback_location: root_path, flash: {
@@ -47,11 +53,10 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:image, :text, :title, :image_cache, :remove_image)
+    params.require(:post).permit(:image, :text, :title, :image_cache, :remove_image )
   end
 
   def set_post
     @post = current_user.posts.find(params[:id])
   end
-
 end

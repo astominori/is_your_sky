@@ -23,5 +23,24 @@ class Post < ApplicationRecord
   belongs_to :user
   mount_uploader :image, ImageUploader
   validates :text, presence: true, length: { minimum: 5}
+  has_many :post_tag_relations, dependent: :destroy
+  has_many :tags, through: :post_tag_relations
+
+  def save_tags(tags)
+    current_tags = self.tags.pluck(:tag) unless self.tags.nil?
+    old_tags = current_tags - tags
+    new_tags = tags - current_tags
+
+    #古いタグを削除する
+    old_tags.each do |old_tag|
+      self.tags.delete Tag.find_by(tag: old_tag)
+    end
+
+    #新しいタグをつける
+    new_tags.each do |new_tag|
+      post_tag = Tag.find_or_create_by(tag: new_tag)
+      self.tags << post_tag
+    end
+  end
 
 end

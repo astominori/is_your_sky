@@ -27,10 +27,15 @@
         = image_tag "default_image.png", class: 'image_present_img'
         = f.hidden_field :image_cache
 
+    #post-tags-field
+      = f.label "タグ"
+      ul[id="post-tags"]
+      = hidden_field_tag :tag_hidden, @tag_list
 
     .form-group
       = f.label :text, "本文"
       = f.text_area :text, class:"form-control", placeholder: "ここに本文を書く"
+
     = f.submit "投稿", class:"btn btn-primary"
   = link_to "もどる", user_root_path, class:"cancel-button"
 
