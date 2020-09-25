@@ -7,4 +7,9 @@ class MypagesController < ApplicationController
     all_posts = Post.all
     @posts_by_date = all_posts.group_by{|post| post.updated_at.to_date}
   end
+
+  private
+  def delete_cache
+    CarrierWave.clean_cached_files!
+  end
 end

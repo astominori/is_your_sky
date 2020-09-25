@@ -7,6 +7,9 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build(flash[:post])
+    if params[:back].present?
+      params[:back] = user_root_path
+    end
   end
 
   def create
@@ -50,4 +53,5 @@ class PostsController < ApplicationController
   def set_post
     @post = current_user.posts.find(params[:id])
   end
+
 end

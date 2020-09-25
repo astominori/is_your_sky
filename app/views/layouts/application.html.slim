@@ -4,9 +4,9 @@ html
     title
       = yield :title || "IS YOUR SKY"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = csrf_meta_tags
     script src="https://kit.fontawesome.com/8122d99f2c.js" crossorigin="anonymous"
     = csp_meta_tag
-    = csrf_meta_tags
     = stylesheet_link_tag    'application','https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap',  media: 'all', 'data-turbolinks-track': true
     = stylesheet_link_tag    'application','https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400&display=swap',  media: 'all', 'data-turbolinks-track': true
     = stylesheet_link_tag "https://unpkg.com/swiper/swiper-bundle.min.css"
