@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_post, only: [:edit,:update,:destroy,:show]
 
   def index
   end
 
   def new
-    @user = current_user
-    @post = @user.posts.build(flash[:post])
+    @post = current_user.posts.build(flash[:post])
   end
 
   def create
@@ -23,12 +23,10 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @user = current_user
-    @post = @user.posts.find_by(params[:post])
   end
 
   def update
-    if @post.update!(task_params)
+    if @post.update(post_params)
       redirect_to user_root_path
     else
       redirect_back fallback_location: root_path, flash: {
@@ -38,8 +36,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+  end
+
+  def show
+  end
+
   private
   def post_params
-    params.require(:post).permit(:image, :text, :title)
+    params.require(:post).permit(:image, :text, :title, :image_cache, :remove_image)
+  end
+
+  def set_post
+    @post = current_user.posts.find(params[:id])
   end
 end

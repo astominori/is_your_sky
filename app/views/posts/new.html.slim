@@ -14,9 +14,31 @@
       = f.text_field :title, class:"form-control"
     .form-group
       = f.label :image, "画像"
-      = f.file_field :image, class:"form-control"
+      = f.file_field :image, class:"form-control", id: 'post_img'
+    .image-preview
+      img id="image_img_prev" src="#" class='hidden'
+
     .form-group
       = f.label :text, "本文"
       = f.text_area :text, class:"form-control", placeholder: "ここに本文を書く"
     = f.submit "投稿", class:"btn btn-primary"
   = link_to "もどる", user_root_path, class:"cancel-button"
+
+  javascript:
+    $( document ).on('turbolinks:load', function() {
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            $('#image_img_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+
+      $("#post_img").change(function(){
+        $('#image_img_prev').removeClass('hidden');
+        readURL(this);
+      });
+    });

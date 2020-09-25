@@ -5,4 +5,18 @@
 .container{
   width: 40%;
   margin: 0 auto;
+
+  .image-preview {
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 250px;
+    }
+
+    #image_img_prev.hidden {
+      display: none;
+    }
+  }
 }
