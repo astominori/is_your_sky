@@ -1,14 +1,14 @@
 section.sub-menu
   .sub-container
     = link_to user_root_path, class:"avater" do
-      - if user.avatar?
-        = image_tag user.avatar.url
+      - if current_user.avatar?
+        = image_tag current_user.avatar.url
       - else
         = image_tag "avatar-default.png"
     h3
-      | #{user.username}
+      | #{current_user.username}
     p
-      | #{user.bio}
+      | #{current_user.bio}
 
     = link_to "新しい空を投稿", new_post_path
     = link_to "今日の空を見てみる", "#"
@@ -21,5 +21,5 @@ section.sub-menu
       | 2020年9月
 
     .setting
-      = link_to "設定", edit_user_registration_path(user)
+      = link_to "設定", edit_user_registration_path(current_user)
       = link_to "ログアウト", destroy_user_session_path, method: :delete

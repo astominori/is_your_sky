@@ -1,6 +1,6 @@
-- provide :title, "mypage - #{@user.username}"
+- provide :title, "mypage - #{current_user.username}"
 .mypage-container
-  = render partial: "user_bio", locals: { user: @user }
+  = render partial: "user_bio", locals: { user: current_user }
 
   section.time-line
     .sub-container
@@ -43,5 +43,5 @@
             | 誰かがみた空を覗いてみる
           .list-image
             - posts.each do |post|
-              - if post.user_id != @user.id
+              - if post.user_id != current_user.id
                 = image_tag post.image.url, class:"thumb"

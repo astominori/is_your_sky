@@ -7,21 +7,21 @@
   = form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put } do |f|
     = render "devise/shared/error_messages", resource: resource
 
-    .circle-avatar
-        img id="avatar_img_prev" src="#" class='hidden'
-      - if current_user.avatar?
-        = image_tag current_user.avatar.url, class: 'avatar_present_img'
-        label
-          = f.check_box :remove_avatar
-          | プロフィール画像を削除
-      - else
-        = image_tag "avatar-default.png", class: 'avatar_present_img'
-        = f.hidden_field :avatar_cache
-
-
     .form-group
       = f.label :avatar
-      = f.file_field :avatar, accept: "image/gif,image/jpg,iamge/png", autocomplete: "avatar", class:"form-control"
+
+      .circle-avatar
+        img id="avatar_img_prev" src="#" class='hidden'
+        - if current_user.persisted? && current_user.avatar?
+          = image_tag current_user.avatar.url, class: 'avatar_present_img'
+          label
+            = f.check_box :remove_avatar
+            | プロフィール画像を削除
+        - else
+          = image_tag "avatar-default.png", class: 'avatar_present_img'
+          = f.hidden_field :avatar_cache
+
+        = f.file_field :avatar, accept: "image/gif,image/jpg,iamge/png", autocomplete: "avatar", class:"form-control", id: 'post_img'
 
     .form-group
       = f.label :username
@@ -42,7 +42,7 @@
     .form-group
       = f.label :password
       i
-       |(leave blank if you don't want to change it)
+       |(空欄可)
       = f.password_field :password, autocomplete: "new-password", class:"form-control"
       - if @minimum_password_length
         i
@@ -55,7 +55,7 @@
     .form-group
       = f.label :current_password
         i
-          | (we need your current password to confirm your changes)
+          | (変更の際のパスワード入力は必須です)
       = f.password_field :current_password, autocomplete: "current-password", class:"form-control"
 
     = f.submit nil, class:"btn btn-primary"
