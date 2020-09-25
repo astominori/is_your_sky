@@ -20,6 +20,11 @@
               | #{post.title}
             p
               | #{post.text}
+            - if post.tags
+              .tag-list
+                - post.tags.each do |tag|
+                  span[class="badge badge-pill badge-secondary"]
+                    | # #{tag.tag}
             figure
               = image_tag post.image.url
 
