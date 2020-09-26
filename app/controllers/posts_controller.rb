@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build(flash[:post])
+    @post = current_user.posts.build
     if params[:back].present?
       params[:back] = user_root_path
     end
@@ -20,10 +20,7 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿しました"
       redirect_to user_root_path
     else
-      redirect_back fallback_location: root_path, flash: {
-        post: @post,
-        error_messages: @post.errors.full_messages
-      }
+      render "new"
     end
   end
 
@@ -38,10 +35,7 @@ class PostsController < ApplicationController
       flash[:notice] = "更新が完了しました"
       redirect_to user_root_path
     else
-      redirect_back fallback_location: root_path, flash: {
-        post: @post,
-        error_messages: @post.errors.full_messages
-      }
+      render "new"
     end
   end
 

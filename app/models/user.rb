@@ -42,6 +42,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
   has_many :posts
+  validates :username, presence: true
   mount_uploader :avatar, AvatarUploader
 
   def self.from_omniauth(auth)
