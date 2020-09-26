@@ -41,7 +41,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
-  has_many :posts;
+  has_many :posts
   mount_uploader :avatar, AvatarUploader
 
   def self.from_omniauth(auth)
@@ -49,7 +49,7 @@ class User < ApplicationRecord
       user.uid = auth["uid"]
       user.username = auth["info"]["nickname"]
       user.provider  = auth["provider"]
-      # user.email = auth["info"]["email"]
+      user.email = auth["info"]["email"]
       # user.password = Devise.friendly_token[0, 20]
       # user.image = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails,
