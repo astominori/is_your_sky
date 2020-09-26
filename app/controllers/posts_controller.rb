@@ -49,6 +49,11 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+  end
+
+  def todays_posts
+    @todays_posts = Post.created_today
   end
 
   private

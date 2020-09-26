@@ -25,6 +25,7 @@ class Post < ApplicationRecord
   validates :text, presence: true, length: { minimum: 5}
   has_many :post_tag_relations, dependent: :destroy
   has_many :tags, through: :post_tag_relations
+  scope :created_today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
 
   def save_tags(tags)
     current_tags = self.tags.pluck(:tag) unless self.tags.nil?

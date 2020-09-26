@@ -1,0 +1,21 @@
+- provide :title, "詳細 - #{@post.title}"
+= render partial: "mypages/user_bio", locals: { user: current_user }
+.container
+  .container-header
+    article
+      .create-date
+        .dot
+          |
+        .date
+          | #{@post.created_at.strftime("%Y-%m-%d")}
+      h3
+        | #{@post.title}
+      p
+        | #{@post.text}
+      - if @post.tags
+        .tag-list
+          - @post.tags.each do |tag|
+            span[class="badge badge-pill badge-secondary"]
+              | # #{tag.tag}
+      figure
+        = image_tag @post.image.url
