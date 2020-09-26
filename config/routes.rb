@@ -3,9 +3,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: "omniauth_callbacks",
     sessions: 'users/sessions'
    }
-  get "about", to: "home#about"
   root 'home#index'
+  get "about", to: "home#about"
   get "/mypages", to: "mypages#show", as: :user_root
+  get "todays_posts",to: "posts#todays_posts"
   resources :posts
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

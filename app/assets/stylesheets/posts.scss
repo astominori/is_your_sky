@@ -19,4 +19,39 @@
       display: none;
     }
   }
+
+  figure {
+    > img {
+      width: 60vh;
+    }
+  }
+}
+
+.todays-container{
+  width: 80%;
+  margin:0 0 0 auto;
+
+  .container-header{
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .todays-images{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 10px;
+
+    li {
+      margin:15px;
+      visibility: hidden;
+      list-style: none;
+
+      > img {
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+      }
+    }
+  }
 }
