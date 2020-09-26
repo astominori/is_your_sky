@@ -3,11 +3,18 @@
   .container-header
     h1
       | 新規投稿
-  - if flash[:error_messages]
-    ul.alert.alert-danger
-      - flash[:error_messages].each do |message|
-        li
-          = message
+
+  -if @post.errors.any?
+    #error_explanation.alert.alert-danger
+      p
+        = I18n.t("errors.messages.not_saved",
+                   count: @post.errors.count,
+                   resource: @post.class.model_name.human.downcase)
+      ul
+        - @post.errors.full_messages.each do |message|
+          li
+            = message
+
   = form_with model: @post, local: true do |f|
     .form-group
       = f.label :title, "タイトル"
