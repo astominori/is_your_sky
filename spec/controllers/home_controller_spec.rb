@@ -11,6 +11,11 @@ RSpec.describe HomeController, type: :controller do
       get :index
       expect(response).to have_http_status "200"
     end
+
+    it "indexテンプレートを返すこと" do
+      get :index
+      expect(response).to render_template(:index)
+    end
   end
 
   describe "#about" do
@@ -22,6 +27,11 @@ RSpec.describe HomeController, type: :controller do
     it "200レスポンスを返すこと" do
       get :about
       expect(response).to have_http_status "200"
+    end
+
+    it "aboutテンプレートを返すこと" do
+      get :about
+      expect(response).to render_template(:about)
     end
   end
 end

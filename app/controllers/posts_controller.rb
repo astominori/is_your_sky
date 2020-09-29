@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: [:edit,:update,:destroy,:show]
+  before_action :set_post, only: [:edit,:update,:destroy]
 
   def index
   end
@@ -14,9 +14,11 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    tag_list = params[:tag_list].split(",")
+    unless params[:tag_list].nil?
+      tag_list = params[:tag_list].split(",")
+    end
     if @post.save
-      @post.save_tags(tag_list)
+      @post.save_tags(tag_list) if tag_list
       flash[:notice] = "投稿しました"
       redirect_to user_root_path
     else
@@ -29,9 +31,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    tags = params[:tag_list].split(",")
+    unless params[:tag_list].nil?
+      tag_list = params[:tag_list].split(",")
+    end
     if @post.update(post_params)
-      @post.save_tags(tags)
+      @post.save_tags(tags) if tag_list
       flash[:notice] = "更新が完了しました"
       redirect_to user_root_path
     else

@@ -2,27 +2,68 @@ require 'rails_helper'
 
 RSpec.describe MypagesController, type: :controller do
   describe "#show" do
-    context "正しいユーザとして" do
+    before do
+      @user = create(:user)
+      @other_user = create(:user, :other_user)
+      @user.confirm
+      @other_user.confirm
+      @other_post = create(:post,
+        user_id: @other_user.id)
+    end
+
+    context "投稿０の正しいユーザとして" do
       before do
-        @user = FactoryBot.create(:user)
+        sign_in @user
+        get :show
       end
 
       it "正常にレスポンスを返すこと" do
-        sign_in @user
-        get :show
         expect(response).to be_successful
       end
 
       it "200レスポンスを返すこと" do
-        sign_in @user
-        get :show
         expect(response).to have_http_status "200"
       end
 
-      it "indexテンプレートを表示すること" do
+      it "showテンプレートを表示すること" do
+        expect(response).to render_template(:show)
+      end
+
+      it "ユーザの投稿した情報が１つもないこと" do
+        expect(assigns[:user_posts].size).to eq 0
+      end
+
+      it "ユーザ以外が投稿した情報が取得できる" do
+        date = @other_post.updated_at.to_date
+        expect(assigns[:posts_by_date]).to include{ {date: @other_post} }
+
+      end
+    end
+
+    context "投稿済みの正しいユーザとして" do
+      before do
+        @user_post = create(:post,
+          user_id: @user.id)
         sign_in @user
         get :show
-        expect(response).to render_template(:show)
+      end
+
+      it "user_postsでユーザが投稿した情報が取得できる" do
+        expect(assigns(:user_posts)).to include @user_post
+      end
+
+      it "user_postsでユーザ以外が投稿した情報は取得できない" do
+        expect(assigns(:user_posts)).to_not include @other_post
+      end
+
+      it "posts_by_dateでユーザ以外が投稿した情報が取得できる" do
+        date = @other_post.updated_at.to_date
+        expect(assigns[:posts_by_date]).to include{ {date: @other_post} }
+      end
+
+      it "posts_by_dateでユーザが投稿していない情報は取得できない" do
+        date = @user_post.updated_at.to_date
+        expect(assigns[:posts_by_date]).to_not include{ {date: @other_post} }
       end
     end
 
