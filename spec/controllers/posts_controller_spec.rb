@@ -111,16 +111,63 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe "#edit" do
+    before do
+      @user = create(:user)
+      @user.confirm
+      @post = create(:post,
+        user_id: @user.id)
+    end
+
+    context "投稿ユーザとして" do
+      it "正常なレスポンスを返す" do
+        sign_in @user
+        get :edit, params: { id: @post.id }
+        expect(response).to be_successful
+      end
+
+      it "200レスポンスを返す" do
+        sign_in @user
+        get :edit, params: { id: @post.id }
+        expect(response).to have_http_status(200)
+      end
+
+      it "editテンプレートを描画する" do
+        sign_in @user
+        get :edit, params: { id: @post.id }
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    context "投稿していないユーザとして" do
+      before do
+        @other_user = create(:user, :other_user)
+        @other_user.confirm
+      end
+
+      it "マイページ画面にリダイレクトする" do
+        sign_in @other_user
+        get :edit, params: { id: @post.id }
+        expect(response).to redirect_to user_root_path
+      end
+    end
+
+    context "ゲストとして" do
+      it "ログイン画面にリダイレクトする（devise既定）" do
+        get :edit, params: { id: @post.id }
+        expect(response).to redirect_to "/users/sign_in"
+      end
+    end
+  end
+
   describe "#update" do
     before do
       @user = create(:user)
       @user.confirm
+      @post = create(:post, user_id: @user.id)
     end
-    context "投稿ユーザとして" do
-      before do
-        @post = create(:post, user_id: @user.id)
-      end
 
+    context "投稿ユーザとして" do
       it "投稿を更新できること" do
         post_params = attributes_for(:post,
           user_id: @user.id,
@@ -131,17 +178,29 @@ RSpec.describe PostsController, type: :controller do
       end
     end
 
-    context "その他のユーザとして" do
+    context "投稿していないのユーザとして" do
       before do
-        @post = create(:post,
-          title: "no change",
-          user_id: @user.id)
         @other_user = create(:user, :other_user)
         @other_user.confirm
       end
 
-      it "投稿が更新できないこと" do
-        #やり方を探しておくこと
+      it "マイページ画面にリダイレクトされること" do
+        post_params = attributes_for(:post,
+          user_id: @user.id,
+          title: "change the title")
+        sign_in @other_user
+        get :update, params: { id: @post.id, post: post_params }
+        expect(response).to redirect_to user_root_path
+      end
+    end
+
+    context "ゲストとして" do
+      it "ログイン画面にリダイレクトする（devise既定）" do
+        post_params = attributes_for(:post,
+          user_id: @user.id,
+          title: "change the title")
+        get :update, params: { id: @post.id, post: post_params }
+        expect(response).to redirect_to "/users/sign_in"
       end
     end
   end

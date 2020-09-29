@@ -60,6 +60,12 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = current_user.posts.find(params[:id])
+    begin
+      @post = current_user.posts.find(params[:id])
+    rescue => e
+      logger.error e
+      flash[:alert] = "アクセスができない画面です"
+      redirect_to user_root_path
+    end
   end
 end
