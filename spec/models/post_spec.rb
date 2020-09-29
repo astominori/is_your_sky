@@ -23,7 +23,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   describe "バリデーションテスト" do
-    it "タイトル、画像、本文があれば有効な状態であること" do
+    it "タイトル、画像、本文、タグがあれば有効な状態であること" do
       post = FactoryBot.build(:post)
       expect(post).to be_valid
     end

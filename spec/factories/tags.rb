@@ -10,6 +10,5 @@
 FactoryBot.define do
   factory :tag do
     tag { "MyString" }
-    post { nil }
   end
 end
