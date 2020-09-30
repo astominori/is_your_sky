@@ -6,47 +6,18 @@
     .sub-container
       - if @user_posts.any?
         - @user_posts.each do |post|
-          article
-            .create-date
-              .dot
-                |
-              .date
-                | #{post.created_at.strftime("%Y-%m-%d")}
-              = link_to edit_post_path(post) do
-                = image_tag "edit_icon.png"
-                | 編集
-
-            h3
-              | #{post.title}
-            p
-              | #{post.text}
-            - if post.tags
-              .tag-list
-                - post.tags.each do |tag|
-                  span[class="badge badge-pill badge-secondary"]
-                    | # #{tag.tag}
-            figure
-              = image_tag post.image.url
+          = render partial: "posts/post_detail", locals: { post: post}
 
       - else
         article
           h3
-            | あなたの空を投稿してみませんか？
+            | あなたの今日の空を投稿してみませんか？
           = link_to "新規投稿はこちら", new_post_path
 
 
   section.time-line
     .sub-container
-      - @posts_by_date.each do |date, posts|
-        article
-          .create-date
-            .dot
-              |
-            .date
-              | #{date.strftime("%Y-%m-%d")}
-          h3
-            | 誰かがみた空を覗いてみる
-          .list-image
-            - posts.each do |post|
-              - if post.user_id != current_user.id
-                = image_tag post.image.url, class:"thumb"
+      - @posts_by_date.each.with_index(1) do |(date, posts), index|
+        = render partial: "posts/others_posts_list", locals: { date: date, posts: posts }
+        if index = 8
+          break

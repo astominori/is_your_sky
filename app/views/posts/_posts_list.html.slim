@@ -1,0 +1,19 @@
+h1
+  = "#{day}の空を眺めてみる"
+
+ul.days-images
+  - posts.each.with_index(1) do |post, index|
+    = link_to post_path(post) do
+      li
+        = image_tag post.image.url
+    - if index > 30
+      break
+
+javascript:
+  $(document).on('turbolinks:load',function(){
+    $(window).load(function(){
+      $('.days-images  li').each(function(i){
+          $(this).delay(i * 100).css({visibility:'visible',opacity:'0'}).animate({opacity:'1'},1000);
+      });
+    });
+  });
