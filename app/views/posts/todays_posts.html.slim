@@ -1,21 +1,5 @@
 - provide :title, "今日の空 - #{Date.today.strftime("%Y-%m-%d")}"
 = render partial: "mypages/user_bio", locals: { user: @user }
-.todays-container
+.days-container
   .container-header
-    h1
-      | 今日の空を眺めてみる
-
-    ul.todays-images
-      - @todays_posts.each do |t_post|
-        = link_to post_path(t_post) do
-          li
-            = image_tag t_post.image.url
-
-javascript:
-  $(document).on('turbolinks:load',function(){
-    $(window).load(function(){
-        $('.todays-images  li').each(function(i){
-            $(this).delay(i * 100).css({visibility:'visible',opacity:'0'}).animate({opacity:'1'},1000);
-        });
-    });
-  });
+    =render partial:"posts/posts_list", locals: { day: "今日", posts: @todays_posts }

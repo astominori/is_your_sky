@@ -54,6 +54,10 @@ class PostsController < ApplicationController
     @todays_posts = Post.created_today
   end
 
+  def this_months_posts
+    @months_posts = Post.created_this_month
+  end
+
   private
   def post_params
     params.require(:post).permit(:image, :text, :title, :image_cache, :remove_image )

@@ -17,8 +17,7 @@ section.sub-menu
       | いつの空を眺める？
     span
       | ○○○○年○○月○○日
-    span
-      | 2020年9月
+    = link_to "#{Date.today.strftime("%Y月%m日の空")}", this_months_posts_path
 
     .setting
       = link_to "設定", edit_user_registration_path(current_user)

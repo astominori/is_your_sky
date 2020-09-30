@@ -1,0 +1,21 @@
+article
+  .create-date
+    .dot
+      |
+    .date
+      | #{post.created_at.strftime("%Y-%m-%d")}
+    -if current_user.id == post.user_id
+      = link_to edit_post_path(post) do
+        = image_tag "edit_icon.png"
+        | 編集
+  h3
+    | #{post.title}
+  p
+    | #{post.text}
+  - if post.tags
+    .tag-list
+      - post.tags.each do |tag|
+        span[class="badge badge-pill badge-secondary"]
+          | # #{tag.tag}
+  figure
+    = image_tag post.image.url
