@@ -1,0 +1,6 @@
+- provide :title, "# #{@tag.tag}がついているポスト"
+= render partial: "mypages/user_bio", locals: { user: current_user }
+.days-container
+  .container-header
+    = render partial:"posts/posts_list", locals: { title: "#{@tag.tag}", posts: @tags_posts }
+    = link_to "Back", :back

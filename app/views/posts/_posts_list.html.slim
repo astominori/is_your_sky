@@ -1,13 +1,21 @@
 h1
-  = "#{day}の空を眺めてみる"
+  = "#{title}の空を眺めてみる"
 
-ul.days-images
-  - posts.each.with_index(1) do |post, index|
-    = link_to post_path(post) do
+- if posts.any?
+  ul.days-images
+    - posts.each.with_index(1) do |post, index|
       li
-        = image_tag post.image.url
-    - if index > 30
-      break
+        = link_to post_path(post) do
+          = image_tag post.image.url
+      - if index > 30
+        break
+- else
+  p
+    | 該当する投稿がありませんでした。
+    br
+    | あなたの今日の空を投稿してみませんか？
+  = link_to "新規投稿はこちら", new_post_path
+  br
 
 javascript:
   $(document).on('turbolinks:load',function(){

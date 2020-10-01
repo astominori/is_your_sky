@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/mypages", to: "mypages#show", as: :user_root
   get "todays_posts",to: "posts#todays_posts"
   get "this_months_posts", to: "posts#this_months_posts"
+  get "/tags_search/:t_id", to: "posts#tags_search", as: :tags_search
   resources :posts
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

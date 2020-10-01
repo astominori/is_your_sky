@@ -47,10 +47,14 @@
       visibility: hidden;
       list-style: none;
 
-      > img {
-        width: 200px;
-        height: 150px;
-        object-fit: cover;
+      a {
+        margin: 0;
+        
+        > img {
+          width: 200px;
+          height: 150px;
+          object-fit: cover;
+        }
       }
     }
   }
@@ -110,7 +114,16 @@ article{
     float: left;
     padding-left: 35px;
     padding-bottom: 10px;
+
+    .tags_search {
+      margin: 0;
+
+      &:hover{
+        opacity: 0.8;
+      }
+    }
   }
+
 
   img {
     padding-left: 35px;

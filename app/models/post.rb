@@ -27,6 +27,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tag_relations
   scope :created_today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
   scope :created_this_month, -> { where("created_at >= ?", Time.zone.now.beginning_of_month)}
+  scope :find_tags_posts, -> (id){ joins(:tags).where( tags: { id: id }) }
 
   def save_tags(tags)
     current_tags = self.tags.pluck(:tag) unless self.tags.nil?
@@ -44,5 +45,4 @@ class Post < ApplicationRecord
       self.tags << post_tag
     end
   end
-
 end
