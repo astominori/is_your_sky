@@ -58,6 +58,11 @@ class PostsController < ApplicationController
     @months_posts = Post.created_this_month
   end
 
+  def tags_search
+    @tag = Tag.find(params[:t_id])
+    @tags_posts = Post.find_tags_posts(params[:t_id])
+  end
+
   private
   def post_params
     params.require(:post).permit(:image, :text, :title, :image_cache, :remove_image )

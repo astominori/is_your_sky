@@ -1,5 +1,6 @@
 - provide :title, "今日の空 - #{Date.today.strftime("%Y-%m-%d")}"
-= render partial: "mypages/user_bio", locals: { user: @user }
+= render partial: "mypages/user_bio", locals: { user: current_user }
 .days-container
   .container-header
-    =render partial:"posts/posts_list", locals: { day: "今日", posts: @todays_posts }
+    = render partial:"posts/posts_list", locals: { title: "今日", posts: @todays_posts }
+    = link_to "Back", :back

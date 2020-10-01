@@ -15,7 +15,8 @@ article
   - if post.tags
     .tag-list
       - post.tags.each do |tag|
-        span[class="badge badge-pill badge-secondary"]
-          | # #{tag.tag}
+        = link_to tags_search_path(t_id: tag.id),class:"tags_search" do
+          span[class="badge badge-pill badge-secondary"]
+            | # #{tag.tag}
   figure
     = image_tag post.image.url
