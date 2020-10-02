@@ -7,9 +7,6 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build
-    if params[:back].present?
-      params[:back] = user_root_path
-    end
   end
 
   def create
@@ -44,6 +41,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
+    redirect_back fallback_location: user_root_path, notice: "削除しました。"
   end
 
   def show
@@ -69,6 +68,8 @@ class PostsController < ApplicationController
   end
 
   def set_post
+    
+    #ユーザが投稿していないpostのアクセスを拒否する
     begin
       @post = current_user.posts.find(params[:id])
     rescue => e

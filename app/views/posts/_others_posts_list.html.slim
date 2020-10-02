@@ -1,13 +1,14 @@
-article
+article.other-post
   .create-date
     .dot
       |
     .date
       | #{date.strftime("%Y-%m-%d")}
-  h3
-    | 誰かが見た空を覗いてみる
-  .list-image
-    - posts.each do |post|
-      = link_to post_path(post) do
-        = image_tag post.image.url, class:"thumb"
-  = link_to "and more", "#"
+  .post-text
+    h4
+      | この日、誰かが見た空を覗いてみる
+    .list-image
+      - posts.each do |post|
+        = link_to post_path(post) do
+          = image_tag post.image.url, class:"thumb"
+    = link_to "and more", "#"

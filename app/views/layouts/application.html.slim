@@ -7,36 +7,41 @@ html
     = csrf_meta_tags
     script src="https://kit.fontawesome.com/8122d99f2c.js" crossorigin="anonymous"
     = csp_meta_tag
-    = stylesheet_link_tag    'application','https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap',  media: 'all', 'data-turbolinks-track': true
-    = stylesheet_link_tag    'application','https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400&display=swap',  media: 'all', 'data-turbolinks-track': true
-    = stylesheet_link_tag "https://unpkg.com/swiper/swiper-bundle.min.css"
+    = stylesheet_link_tag    'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap',  media: 'all', 'data-turbolinks-track': true
+    = stylesheet_link_tag    'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400&display=swap',  media: 'all', 'data-turbolinks-track': true
+    = stylesheet_link_tag    "https://unpkg.com/swiper/swiper-bundle.min.css",  media: 'all', 'data-turbolinks-track': true
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css',  media: 'all', 'data-turbolinks-track': true
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js', 'data-turbolinks-track': 'reload'
 
   body
     = render partial: "shared/flash"
     = yield
 
-    = javascript_include_tag "https://unpkg.com/swiper/swiper-bundle.min.js"
+  = javascript_include_tag  "https://unpkg.com/swiper/swiper-bundle.min.js", 'data-turbolinks-track': 'reload'
 
-    javascript:
-      var mySwiper = new Swiper('.swiper-container', {
-        // Optional parameters
-        loop: true,
+  javascript:
 
-        // If we need pagination
-        pagination: {
-          el: '.swiper-pagination',
-        },
+    /* home画面のswiper設定 */
+    var mySwiper = new Swiper('.swiper-container', {
+      //オプション設定：ループ
+      loop: true,
 
-        // Navigation arrows
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
+      //ページネーションの設定
+      pagination: {
+        el: '.swiper-pagination',
+      },
 
-      })
+      //両脇の矢印の設定
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
 
-      $(function(){
-        setTimeout("$('#flash').fadeOut('slow')", 3000)
-      })
+    })
+
+    /* flashの設定 */
+    $(function(){
+      setTimeout("$('#flash').fadeOut('slow')", 3000)
+    })

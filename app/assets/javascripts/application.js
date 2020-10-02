@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require rails-ujs
 //= require jquery-ui
 //= require popper
 //= require bootstrap-sprockets
@@ -19,3 +18,25 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+/* 各ページでの実装jquery */
+$( document ).on('turbolinks:load', function() {
+
+  /* ユーザ情報編集画面のアバター画像プレビュー */
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#avatar_img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#post_img").change(function(){
+    $('#avatar_img_prev').removeClass('hidden');
+    $('.avatar_present_img').remove();
+    readURL(this);
+  });
+
+});

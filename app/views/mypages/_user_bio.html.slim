@@ -1,24 +1,34 @@
 section.sub-menu
   .sub-container
-    = link_to user_root_path, class:"avater" do
-      - if current_user.avatar?
-        = image_tag current_user.avatar.url
-      - else
-        = image_tag "avatar-default.png"
-    h3
-      | #{current_user.username}
-    p
-      | #{current_user.bio}
-
-    = link_to "新しい空を投稿", new_post_path
-    = link_to "今日の空を見てみる", todays_posts_path
-
-    p
-      | いつの空を眺める？
-    span
-      | ○○○○年○○月○○日
-    = link_to "#{Date.today.strftime("%Y月%m日の空")}", this_months_posts_path
+    .profile
+      = link_to user_root_path, class:"avater" do
+        - if current_user.avatar?
+          = image_tag current_user.avatar.url
+        - else
+          = image_tag "avatar-default.png"
+      h3
+        | #{current_user.username}
+      p
+        | #{current_user.bio}
+    .user-content
+      = link_to new_post_path do
+        i.fas.fa-pencil-alt
+        | 空を投稿
+      = link_to todays_posts_path do
+        i.fas.fa-cloud-sun
+        | 今日の空
+    .search-post
+      p
+        | いつの空を眺める？
+      .search-list
+        span
+          | ○○○○年○○月○○日
+        = link_to "#{Date.today.strftime("%Y月%m日の空")}", this_months_posts_path
 
     .setting
-      = link_to "設定", edit_user_registration_path(current_user)
-      = link_to "ログアウト", destroy_user_session_path, method: :delete
+      = link_to edit_user_registration_path(current_user), class:"nav-link" do
+        i.fas.fa-cog
+        | 設定
+      = link_to destroy_user_session_path, method: :delete, class:"nav-link" do
+        i.fas.fa-sign-out-alt
+        | logout

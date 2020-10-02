@@ -6,18 +6,67 @@
     .sub-container
       - if @user_posts.any?
         - @user_posts.each do |post|
-          = render partial: "posts/post_detail", locals: { post: post}
+
+          article
+            .create-date
+              .dot
+                |
+              .date
+                | #{post.created_at.strftime("%Y-%m-%d")}
+              -if current_user.id == post.user_id
+                = link_to edit_post_path(post) do
+                  = image_tag "edit_icon.png"
+                  | 編集
+                = link_to post_path(post), data: { confirm: "投稿を削除してよろしいですか？" }, method: :delete do
+                  i.fas.fa-trash-alt
+                  | 削除
+
+            .post-text
+              h3
+                | #{post.title}
+              p
+                | #{post.text}
+              - if post.tags
+                .tag-list
+                  - post.tags.each do |tag|
+                    = link_to tags_search_path(t_id: tag.id),class:"tags_search" do
+                      span[class="badge badge-pill badge-secondary"]
+                        | # #{tag.tag}
+            figure
+              = link_to post.image.url, "data-lightbox": post.image, "data-title": post.title do
+                = image_tag post.image.url
+
+          .border-line.border-middle
+
+          article.other-post
+            .create-date
+              .dot
+                |
+              .date
+                | #{post.created_at.strftime("%Y-%m-%d")}
+            .post-text
+              h4
+                | この日、誰かが見た空を覗いてみる
+              - if @posts_by_date.has_key?(post.created_at)
+                .list-image
+                  - @posts_by_date[post.created_at].each do |post|
+                    = link_to post_path(post) do
+                      = image_tag post.image.url, class:"thumb"
+                = link_to "and more", "#"
+              - else
+                p
+                  | まだ投稿がありません
+
+          .border-line
 
       - else
         article
           h3
             | あなたの今日の空を投稿してみませんか？
           = link_to "新規投稿はこちら", new_post_path
+          h3
+            | または他の人の空を見てみる？
 
 
-  section.time-line
-    .sub-container
-      - @posts_by_date.each.with_index(1) do |(date, posts), index|
-        = render partial: "posts/others_posts_list", locals: { date: date, posts: posts }
-        if index = 8
-          break
+div[id="page_top"]
+  a[href="#"]

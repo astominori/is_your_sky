@@ -16,12 +16,3 @@ h1
     | あなたの今日の空を投稿してみませんか？
   = link_to "新規投稿はこちら", new_post_path
   br
-
-javascript:
-  $(document).on('turbolinks:load',function(){
-    $(window).load(function(){
-      $('.days-images  li').each(function(i){
-          $(this).delay(i * 100).css({visibility:'visible',opacity:'0'}).animate({opacity:'1'},1000);
-      });
-    });
-  });

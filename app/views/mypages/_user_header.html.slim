@@ -1,0 +1,31 @@
+nav[class="js-navbar-scroll navbar fixed-top navbar-expand-lg navbar-transparent navbar-dark navbar-bg-onscroll--fade"]
+  .container-fluid.user-header
+    = link_to user_root_path, class:"navbar-brand" do
+      - if current_user.avatar?
+        = image_tag current_user.avatar.url, class:"d-inline-block align-top",alttextile:""
+      - else
+        = image_tag "avatar-default.png", class:"d-inline-block align-top",alttextile:""
+      | #{current_user.username}
+    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul[class="navbar-nav mr-auto mt-2 mt-lg-0"]
+        li[class="nav-item #{"active" if controller.action_name == "new" }"]
+          = link_to new_post_path, class:"nav-link" do
+            i.fas.fa-pencil-alt
+            | 空を投稿
+        li[class="nav-item #{"active" if controller.action_name == "todays_posts" }"]
+          = link_to todays_posts_path, class:"nav-link" do
+            i.fas.fa-cloud-sun
+            | 今日の空
+        li[class="nav-item #{"active" if controller.action_name == "this_months_posts" }"]
+          = link_to "#{Date.today.strftime("%Y月%m日の空")}", this_months_posts_path, class:"nav-link"
+      ul[class="navbar-nav ml-auto my-2 my-lg-0"]
+        li[class="nav-item #{"active" if controller.action_name == "edit" }"]
+          = link_to edit_user_registration_path(current_user), class:"nav-link" do
+            i.fas.fa-cog
+            | 設定
+        button[class="btn btn-sm btn-warning nav-item" type="button"]
+          = link_to destroy_user_session_path, method: :delete, class:"nav-link" do
+            i.fas.fa-sign-out-alt
+            | logout

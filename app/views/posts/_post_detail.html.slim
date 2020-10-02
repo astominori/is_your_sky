@@ -8,15 +8,21 @@ article
       = link_to edit_post_path(post) do
         = image_tag "edit_icon.png"
         | 編集
-  h3
-    | #{post.title}
-  p
-    | #{post.text}
-  - if post.tags
-    .tag-list
-      - post.tags.each do |tag|
-        = link_to tags_search_path(t_id: tag.id),class:"tags_search" do
-          span[class="badge badge-pill badge-secondary"]
-            | # #{tag.tag}
+      = link_to post_path(post), data: { confirm: "投稿を削除してよろしいですか？" }, method: :delete do
+        i.fas.fa-trash-alt
+        | 削除
+
+  .post-text
+    h3
+      | #{post.title}
+    p
+      | #{post.text}
+    - if post.tags
+      .tag-list
+        - post.tags.each do |tag|
+          = link_to tags_search_path(t_id: tag.id),class:"tags_search" do
+            span[class="badge badge-pill badge-secondary"]
+              | # #{tag.tag}
   figure
-    = image_tag post.image.url
+    = link_to post.image.url, "data-lightbox": post.image, "data-title": post.title do
+      = image_tag post.image.url

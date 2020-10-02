@@ -1,56 +1,8 @@
-= render partial: "mypages/user_bio", locals: { user: @user }
+- provide :title, "新規投稿"
+= render partial: "mypages/user_header"
 .container
   .container-header
     h1
       | 新規投稿
 
-  -if @post.errors.any?
-    #error_explanation.alert.alert-danger
-      p
-        = I18n.t("errors.messages.not_saved",
-                   count: @post.errors.count,
-                   resource: @post.class.model_name.human.downcase)
-      ul
-        - @post.errors.full_messages.each do |message|
-          li
-            = message
-
-  = form_with model: @post, local: true do |f|
-    .form-group
-      = f.label :title, "タイトル"
-      = f.text_field :title, class:"form-control"
-    .form-group
-      = f.label :image, "画像"
-      = f.file_field :image, class:"form-control", id: 'post_img'
-    .image-preview
-      img id="image_img_prev" src="#" class='hidden'
-
-    #post-tags-field
-      = f.label "タグ"
-      ul[id="post-tags"]
-      = hidden_field_tag :tag_hidden, @tag_list
-
-    .form-group
-      = f.label :text, "本文"
-      = f.text_area :text, class:"form-control", placeholder: "ここに本文を書く"
-    = f.submit "投稿", class:"btn btn-primary"
-  = link_to "もどる", user_root_path, class:"cancel-button"
-
-javascript:
-  $( document ).on('turbolinks:load', function() {
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-          $('#image_img_prev').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-
-    $("#post_img").change(function(){
-      $('#image_img_prev').removeClass('hidden');
-      readURL(this);
-    });
-  });
+  = render partial: "posts/form", locals: { post: @post, tag_list: @tag_list }
