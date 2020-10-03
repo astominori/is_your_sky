@@ -47,9 +47,9 @@
             .post-text
               h4
                 | この日、誰かが見た空を覗いてみる
-              - if @posts_by_date.has_key?(post.created_at)
+              - if @posts_by_date.has_key?(post.created_at.to_date)
                 .list-image
-                  - @posts_by_date[post.created_at].each do |post|
+                  - @posts_by_date[post.created_at.to_date].each do |post|
                     = link_to post_path(post) do
                       = image_tag post.image.url, class:"thumb"
                 = link_to "and more", "#"
