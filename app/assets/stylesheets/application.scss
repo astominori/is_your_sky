@@ -73,8 +73,8 @@ a {
 
   //透明な箱を用意する
   .container{
-    width: 50%;
-    min-height: 70%;
+    width: 300px;
+    min-height: 300px;
     background-color: rgba(54, 54, 54, 0.6);
     display: flex;
     justify-content: center;
@@ -194,5 +194,19 @@ footer {
    }
    p{
      color: #999;
+  }
+}
+
+/* ====PC版==== */
+
+@media (min-width: 600px) {
+
+  .home-form{
+
+    //透明な箱を用意する
+    .container{
+      width: 50%;
+      min-height: 70%;
+    }
   }
 }
