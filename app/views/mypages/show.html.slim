@@ -49,10 +49,15 @@
                 | この日、誰かが見た空を覗いてみる
               - if @posts_by_date.has_key?(post.created_at.to_date)
                 .list-image
-                  - @posts_by_date[post.created_at.to_date].each do |post|
-                    = link_to post_path(post) do
-                      = image_tag post.image.url, class:"thumb"
-                = link_to "and more", "#"
+                  - @posts_by_date[post.created_at.to_date].each.with_index(1) do |post, index|
+                    - if index > 8
+                      break
+                    - else
+                      = link_to post_path(post) do
+                        = image_tag post.image.url, class:"thumb"
+
+
+                //= link_to "and more", "#"
               - else
                 p
                   | まだ投稿がありません
@@ -70,3 +75,6 @@
 
 div[id="page_top"]
   a[href="#"]
+
+= stylesheet_link_tag    'lightbox', media: 'all', 'data-turbolinks-track': 'reload'
+= javascript_include_tag 'lightbox', 'data-turbolinks-track': 'reload'

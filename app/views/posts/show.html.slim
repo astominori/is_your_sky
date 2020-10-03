@@ -4,3 +4,6 @@
   .container-header
     = render partial: "posts/post_detail", locals: { post: @post}
     = link_to "home", user_root_path
+
+= stylesheet_link_tag    'lightbox', media: 'all', 'data-turbolinks-track' => true
+= javascript_include_tag 'lightbox', 'data-turbolinks-track' => true

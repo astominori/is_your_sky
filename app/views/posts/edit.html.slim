@@ -6,3 +6,7 @@
       | 編集
 
   = render partial: "posts/form", locals: { post: @post, tag_list: @tag_list }
+
+= stylesheet_link_tag    'jquery.tagit', media: 'all', 'data-turbolinks-track' => true
+= stylesheet_link_tag    'tagit.ui-zendesk', media: 'all', 'data-turbolinks-track' => true
+= javascript_include_tag 'tag-it', 'data-turbolinks-track' => true
