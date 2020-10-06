@@ -7,6 +7,44 @@ $( document ).on('turbolinks:load', function() {
       var reader = new FileReader();
 
       reader.onload = function (e) {
+        var formData = new FormData();
+        formData.append("image_cache", input.files[0]);
+        $.ajax({
+          url: "check_cache_image",
+          type: "POST",
+          data: formData,
+          dataType: "json",
+          processData: false,
+          contentType: false,
+        }).done(function(data){
+          console.log("done");
+          console.log(data);
+           var tag_list = data.data.tag_list
+           var image_flag = data.data.image_flag
+           console.log(tag_list);
+           console.log(image_flag);
+
+           if(image_flag == true){
+             $('#image_isnot_sky').removeClass('hidden');
+             console.log("done flag");
+           }else{
+
+             $('#image_isnot_sky').addClass('hidden');
+
+             $("#post-tags").tagit("removeAll");
+
+             $.each(tag_list, function(index, tag){
+               $('#post-tags').tagit('createTag', tag);
+               console.log(tag);
+             })
+             console.log("finish done");
+           }
+
+        }).fail(function(){
+          console.log("fail");
+          alert('画像の読み込みに失敗しました');
+        })
+
         $('#image_img_prev').attr('src', e.target.result);
       }
       reader.readAsDataURL(input.files[0]);
@@ -36,7 +74,6 @@ $( document ).on('turbolinks:load', function() {
 
   var tag_string = $("#tag_hidden").val();
   var tag_list = tag_string.split(',');
-
 
   $.each(tag_list, function(index, tag){
     $('#post-tags').tagit('createTag', tag);
