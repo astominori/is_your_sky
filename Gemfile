@@ -59,6 +59,8 @@ gem 'mini_magick'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'jquery-ui-rails'
+#画像解析のVision APIを使用するためのgem
+gem 'google-cloud-vision'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

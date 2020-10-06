@@ -25,6 +25,8 @@
         | 画像を削除
     - else
       = f.hidden_field :avatar_cache
+    span[id="image_isnot_sky" class="hidden"]
+      | 空の画像ではない可能性があります。空の写真を投稿ください
 
 
   #post-tags-field
