@@ -18,6 +18,15 @@
     #image_img_prev.hidden {
       display: none;
     }
+
+    #image_isnot_sky{
+      color: red;
+      font-weight: bold;
+    }
+
+    #image_isnot_sky.hidden{
+      display: none;
+    }
   }
 
   figure {

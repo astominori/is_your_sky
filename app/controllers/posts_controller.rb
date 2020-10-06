@@ -5,8 +5,51 @@ class PostsController < ApplicationController
   def index
   end
 
+  def check_cache_image
+    require "google/cloud/vision"
+
+    #Vision APIの設定
+    image_annotator  = Google::Cloud::Vision.image_annotator do | config |
+      config.credentials = ENV["GOOGLE_APPLICATION_CREDENTIALS"]
+    end
+
+    #キャッシュ情報を取得する
+    image = params[:image_cache].path
+    #キャッシュをVision APIにレスポンスとして渡す。
+    response = image_annotator.label_detection image: image
+
+    #labelを配列に入れる
+    label_list = []
+    response.responses.each do |res|
+      res.label_annotations.each do |label|
+        label_list.push(label.description)
+      end
+    end
+
+    #空の写真かを判定する
+    if label_list.include?("Sky")
+      @image_flag = false
+    else
+      @image_flag = true
+    end
+
+    #labelの先頭3つをタグとして持ってくる
+    if label_list.length >= 3
+      @tag_list = label_list[0..3]
+    else
+      @tag_list = label_list
+    end
+
+    @data = { tag_list: @tag_list, image_flag: @image_flag }
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def new
     @post = current_user.posts.build
+    @image_flag = false
   end
 
   def create
@@ -68,7 +111,6 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    
     #ユーザが投稿していないpostのアクセスを拒否する
     begin
       @post = current_user.posts.find(params[:id])
