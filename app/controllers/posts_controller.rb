@@ -34,13 +34,14 @@ class PostsController < ApplicationController
     end
 
     #labelの先頭3つをタグとして持ってくる
-    if label_list.length >= 3
+    if label_list.length >= 4
       @tag_list = label_list[0..3]
     else
       @tag_list = label_list
     end
 
     @data = { tag_list: @tag_list, image_flag: @image_flag }
+
     respond_to do |format|
       format.html
       format.json
