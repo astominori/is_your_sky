@@ -6,9 +6,4 @@ class MypagesController < ApplicationController
     all_posts = Post.all.order(created_at: "DESC") - @user_posts
     @posts_by_date = all_posts.group_by{|post| post.created_at.to_date}
   end
-
-  private
-  def delete_cache
-    CarrierWave.clean_cached_files!
-  end
 end

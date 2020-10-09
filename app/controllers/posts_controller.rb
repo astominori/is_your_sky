@@ -2,9 +2,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:edit,:update,:destroy]
 
-  def index
-  end
-
   def check_cache_image
     require "google/cloud/vision"
 
