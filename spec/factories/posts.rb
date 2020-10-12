@@ -25,6 +25,22 @@ FactoryBot.define do
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test-sample.jpg'))  }
     sequence(:text) { |n| "test #{n}"}
     user
+
+    trait :post_today do
+      created_at { Date.today }
+    end
+
+    trait :post_yesterday do
+      created_at { Date.today-1 }
+    end
+
+    trait :post_lastweek do
+      created_at { (Date.today - 1.week).beginning_of_week }
+    end
+
+    trait :post_lastmonth do
+      created_at { (Date.today - 1.month).beginning_of_week }
+    end
   end
 
   factory :wrong_post, class: Post do
