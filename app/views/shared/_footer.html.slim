@@ -1,9 +1,30 @@
-footer.container.footer
-  nav.navbar.d-flex
-    ul
-      li ABOUT
-      li SUPPORT
-      li CONTACT
-      li TERM OF SERVICE
-    p
-      | © 2020 IS_YOUR_SKY
+footer
+  div.container
+    div.row.text-center
+      div[class="col-md-6 col-sm-6 col-xs-12"]
+        ul.list-inline
+          li
+            = link_to "https://github.com/astominori/is_your_sky" do
+              i.fab.fa-github
+          li
+            = link_to "#" do
+              i.fa.fa-facebook
+          li
+            = link_to "#" do
+              i.fab.fa-twitter
+
+      div[class="col-md-6 col-sm-6 col-xs-12"]
+        ul.menu.list-inline
+          li
+            = link_to "TOP", root_path
+          li
+            = link_to "ABOUT", about_path
+          li
+            = link_to "SIGN IN", new_user_registration_path
+          li
+            = link_to "SIGN UP", new_user_session_path
+div.copyright
+  div.container
+    div.row.text-center
+        p
+          | © 2020 astrominori
