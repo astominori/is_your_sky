@@ -91,7 +91,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'https://enigmatic-hollows-71751.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'https://isyoursky-web.herokuapp.com/' }
   #送信方法を指定（この他に:sendmail/:file/:testなどがあります)
   config.action_mailer.delivery_method = :smtp
   #送信方法として:smtpを指定した場合は、このconfigを使って送信詳細の設定を行います
@@ -99,7 +99,7 @@ Rails.application.configure do
     #gmail利用時はaddress,domain,portは下記で固定
     address:"smtp.gmail.com",
     domain: 'gmail.com',
-    port:587,
+    port: 587,
     #gmailのユーザアカウント（xxxx@gmail.com)※念のため、credentials.yml.enc行き
     user_name: ENV['GMAIL_ADDRESS'],
     #gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得、必ずcredentials.yml.endに設定を！！
