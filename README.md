@@ -29,7 +29,7 @@ https://isyoursky-web.herokuapp.com/
 各種登録機能は実装済みですが、<br>
 デモユーザーでログイン可能です。
 <br>
-MAIL：example-1@mail.com<br>
+MAIL：example-1@email.com<br>
 PASS：password
 <br>
 <br>
