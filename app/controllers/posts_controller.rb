@@ -6,8 +6,10 @@ class PostsController < ApplicationController
     require "google/cloud/vision"
 
     #Vision APIの設定
-    image_annotator = Google::Cloud::Vision.image_annotator do | config |
-       config.credentials = ENV["GOOGLE_APPLICATION_CREDENTIALS"]
+    if Rails.env.production?
+      config.credentials = JSON.parse(ENV.fetch('GOOGLE_CREDENTIALS'))
+    else
+      config.credentials = ENV["GOOGLE_APPLICATION_CREDENTIALS"]
     end
 
     #キャッシュ情報を取得する
