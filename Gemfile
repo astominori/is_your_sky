@@ -44,20 +44,23 @@ gem 'mini_racer'
 gem 'kaminari'
 #日本語化 i18n
 gem 'rails-i18n'
-#画像操作 carrierwave
+#画像操作 carrierwave 編集 mini_magick
 gem "carrierwave"
+gem 'mini_magick'
 #画像をAWS S3にいれる fog-aws
 gem 'fog-aws'
 #環境変数の設定 doten-rails
 gem 'dotenv-rails'
 #テストケースの作成 faker
 gem 'faker'
-gem 'slim-rails'
-gem 'html2slim'
+#認証機能を設定する
 gem 'devise'
-gem 'mini_magick'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+# slimを使用する html2slim slim-rails
+gem 'html2slim'
+gem 'slim-rails'
+#jqueryを使用する jquery-ui-rails
 gem 'jquery-ui-rails'
 #画像解析のVision APIを使用するためのgem
 gem 'google-cloud-vision'
@@ -69,6 +72,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
+  gem 'rubocop', '~> 0.93.1', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -77,9 +84,9 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'pry-byebug'
   gem 'annotate'
+  gem 'pry-byebug'
+  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
 end
 

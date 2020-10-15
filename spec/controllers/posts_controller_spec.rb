@@ -53,7 +53,7 @@ RSpec.describe PostsController, type: :controller do
           sign_in @user
           expect {
             get :create, params: { post: post_params }
-          }.to change{@user.posts.count}.by(1)
+          }.to change { @user.posts.count }.by(1)
         end
       end
 

@@ -23,7 +23,7 @@ FactoryBot.define do
   factory :post do
     title { "test" }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test-sample.jpg'))  }
-    sequence(:text) { |n| "test #{n}"}
+    sequence(:text) { |n| "test #{n}" }
     user
 
     trait :post_today do
@@ -43,7 +43,7 @@ FactoryBot.define do
     end
   end
 
-  factory :wrong_post, class: Post do
+  factory :wrong_post, class: 'Post' do
     title { "test" }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test-sample.jpg'))  }
     text { "" }
