@@ -7,8 +7,7 @@ RSpec.describe MypagesController, type: :controller do
       @other_user = create(:user, :other_user)
       @user.confirm
       @other_user.confirm
-      @other_post = create(:post,
-        user_id: @other_user.id)
+      @other_post = create(:post, user_id: @other_user.id)
     end
 
     context "投稿０の正しいユーザとして" do
@@ -43,7 +42,7 @@ RSpec.describe MypagesController, type: :controller do
     context "投稿済みの正しいユーザとして" do
       before do
         @user_post = create(:post,
-          user_id: @user.id)
+                            user_id: @user.id)
         sign_in @user
         get :show
       end

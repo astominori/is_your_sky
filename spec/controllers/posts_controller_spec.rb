@@ -81,8 +81,7 @@ RSpec.describe PostsController, type: :controller do
     before do
       @user = create(:user)
       @user.confirm
-      @post = create(:post,
-        user_id: @user.id)
+      @post = create(:post, user_id: @user.id)
     end
 
     context "投稿ユーザとして" do
@@ -135,9 +134,11 @@ RSpec.describe PostsController, type: :controller do
 
     context "投稿ユーザとして" do
       it "投稿を更新できること" do
-        post_params = attributes_for(:post,
+        post_params = attributes_for(
+          :post,
           user_id: @user.id,
-          title: "change the title")
+          title: "change the title"
+        )
         sign_in @user
         get :update, params: { id: @post.id, post: post_params }
         expect(@post.reload.title).to eq "change the title"
@@ -151,9 +152,11 @@ RSpec.describe PostsController, type: :controller do
       end
 
       it "マイページ画面にリダイレクトされること" do
-        post_params = attributes_for(:post,
+        post_params = attributes_for(
+          :post,
           user_id: @user.id,
-          title: "change the title")
+          title: "change the title"
+        )
         sign_in @other_user
         get :update, params: { id: @post.id, post: post_params }
         expect(response).to redirect_to user_root_path
@@ -162,9 +165,11 @@ RSpec.describe PostsController, type: :controller do
 
     context "ゲストとして" do
       it "ログイン画面にリダイレクトする（devise既定）" do
-        post_params = attributes_for(:post,
+        post_params = attributes_for(
+          :post,
           user_id: @user.id,
-          title: "change the title")
+          title: "change the title"
+        )
         get :update, params: { id: @post.id, post: post_params }
         expect(response).to redirect_to "/users/sign_in"
       end

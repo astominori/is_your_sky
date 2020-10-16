@@ -29,9 +29,7 @@ RSpec.describe Post, type: :model do
     end
 
     it "本文がなければ無効な状態であること" do
-      post = FactoryBot.build(:post,
-        text: ""
-      )
+      post = FactoryBot.build(:post, text: "")
       post.valid?
       expect(post.errors[:text]).to include("を入力してください")
     end

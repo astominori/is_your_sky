@@ -14,23 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-FactoryBot/FactoryClassName:
-  Exclude:
-#    - 'spec/factories/posts.rb'
-
-# Offense count: 10
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IndentationWidth.
-# SupportedStyles: with_first_argument, with_fixed_indentation
-Layout/ArgumentAlignment:
-  Exclude:
-    - 'spec/controllers/mypages_controller_spec.rb'
-    - 'spec/controllers/posts_controller_spec.rb'
-    - 'spec/models/post_spec.rb'
-    - 'spec/models/user_spec.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Layout/EmptyLines:

@@ -53,3 +53,12 @@ Style/PreferredHashMethods:
 #hashの書き方、 key: :valueを許容する。
 Style/HashSyntax:
   EnforcedStyle: ruby19_no_mixed_keys
+
+#Filepathの書き方。slashsで書く
+Rails/FilePath:
+  EnforcedStyle: slashes
+
+#rspecはブロックの長さが長くなるので・・・
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
