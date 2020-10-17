@@ -1,4 +1,4 @@
-FROM ruby:2.4.5
+FROM ruby:2.5.0
 RUN apt-get update -qq && apt-get install -y build-essential nodejs default-mysql-client \
     imagemagick libmagick++-dev vim\
     locales locales-all && \

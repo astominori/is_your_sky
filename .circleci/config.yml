@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/ruby:2.4.5-node
+    - image: circleci/ruby:2.5.0-node
       environment:
         - BUNDLER_VERSION: 2.0.2
         - RAILS_ENV: 'test'
