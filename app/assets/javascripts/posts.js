@@ -26,12 +26,12 @@ $( document ).on('turbolinks:load', function() {
              //アラートを表示する
              $('#image_isnot_sky').removeClass('hidden');
              //タグを削除する
-             /*$("#post-tags").tagit("removeAll");*/
+             //$("#post-tags").tagit("removeAll");
            }else{
              //アラートがすでに表示済みの場合、隠す
              $('#image_isnot_sky').addClass('hidden');
              //タグを削除する
-             /*$("#post-tags").tagit("removeAll");*/
+             //$("#post-tags").tagit("removeAll");
 
              //ラベルを元にタグを作成する
              /*$.each(tag_list, function(index, tag){
