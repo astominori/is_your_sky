@@ -5,11 +5,14 @@ class PostsController < ApplicationController
   def check_cache_image
     require "google/cloud/vision"
 
+
     #Vision APIの設定
-    if Rails.env.production?
-      config.credentials = JSON.parse(ENV.fetch('GOOGLE_CREDENTIALS'))
-    else
-      config.credentials = ENV["GOOGLE_APPLICATION_CREDENTIALS"]
+    image_annotator  = Google::Cloud::Vision.image_annotator do | config |
+      if Rails.env.production?
+        config.credentials = JSON.parse(ENV.fetch('GOOGLE_CREDENTIALS'))
+      else
+        config.credentials = ENV["GOOGLE_APPLICATION_CREDENTIALS"]
+      end
     end
 
     #キャッシュ情報を取得する

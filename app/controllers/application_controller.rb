@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
 
   protected
+
   # methodをオーバーライドする。
   def configure_permitted_parameters
       # account_update, sign_in, sign_up, のフィールドを再定義

@@ -18,9 +18,6 @@ Bundler/OrderedGems:
 # Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
-    - 'app/uploaders/image_uploader.rb'
-    - 'db/migrate/20200917120508_devise_create_users.rb'
-    - 'db/seeds/production.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -28,9 +25,9 @@ Layout/EmptyLines:
 # SupportedStyles: around, only_before
 Layout/EmptyLinesAroundAccessModifier:
   Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/posts_controller.rb'
-    - 'app/uploaders/image_uploader.rb'
+#    - 'app/controllers/application_controller.rb'
+#    - 'app/controllers/posts_controller.rb'
+#    - 'app/uploaders/image_uploader.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
