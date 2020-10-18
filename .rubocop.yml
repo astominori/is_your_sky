@@ -26,6 +26,7 @@ AllCops:
     - 'db/**/*'
     - 'tmp/**/*'
     - 'config/environments/*'
+    - 'lib/**/*'
 
 Rails:
   Enabled: true

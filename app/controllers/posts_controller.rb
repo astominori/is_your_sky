@@ -5,9 +5,8 @@ class PostsController < ApplicationController
   def check_cache_image
     require "google/cloud/vision"
 
-
     #Vision APIの設定
-    image_annotator  = Google::Cloud::Vision.image_annotator do | config |
+    image_annotator = Google::Cloud::Vision.image_annotator do |config|
       if Rails.env.production?
         config.credentials = JSON.parse(ENV.fetch('GOOGLE_CREDENTIALS'))
       else
@@ -43,7 +42,6 @@ class PostsController < ApplicationController
     end
 
     @data = { tag_list: @tag_list, image_flag: @image_flag }
-
     respond_to do |format|
       format.html
       format.json
@@ -109,6 +107,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:image, :text, :title, :image_cache, :remove_image )
   end

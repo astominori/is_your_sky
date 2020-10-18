@@ -35,8 +35,8 @@ Layout/EmptyLinesAroundAccessModifier:
 # SupportedStyles: empty_lines, no_empty_lines
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
-    - 'spec/controllers/mypages_controller_spec.rb'
-    - 'spec/controllers/omniauth_callbacks_controller_spec.rb'
+#    - 'spec/controllers/mypages_controller_spec.rb'
+#    - 'spec/controllers/omniauth_callbacks_controller_spec.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -44,15 +44,15 @@ Layout/EmptyLinesAroundBlockBody:
 # SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines
 Layout/EmptyLinesAroundModuleBody:
   Exclude:
-    - 'app/helpers/posts_helper.rb'
+#    - 'app/helpers/posts_helper.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment, AllowBeforeTrailingComments, ForceEqualSignAlignment.
 Layout/ExtraSpacing:
   Exclude:
-    - 'app/models/user.rb'
-    - 'spec/factories/posts.rb'
+#    - 'app/models/user.rb'
+#    - 'spec/factories/posts.rb'
 
 # Offense count: 45
 # Cop supports --auto-correct.
@@ -62,7 +62,7 @@ Layout/ExtraSpacing:
 # SupportedLastArgumentHashStyles: always_inspect, always_ignore, ignore_implicit, ignore_explicit
 Layout/HashAlignment:
   Exclude:
-    - 'lib/tasks/auto_annotate_models.rake'
+#    - 'lib/tasks/auto_annotate_models.rake'
 
 # Offense count: 5
 # Cop supports --auto-correct.

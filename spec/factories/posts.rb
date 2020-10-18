@@ -22,7 +22,7 @@
 FactoryBot.define do
   factory :post do
     title { "test" }
-    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/test-sample.jpg'))  }
+    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/test-sample.jpg')) }
     sequence(:text) { |n| "test #{n}" }
     user
 
@@ -45,7 +45,7 @@ FactoryBot.define do
 
   factory :wrong_post, class: 'Post' do
     title { "test" }
-    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/test-sample.jpg'))  }
+    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/test-sample.jpg')) }
     text { "" }
   end
 end

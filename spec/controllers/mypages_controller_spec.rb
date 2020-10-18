@@ -35,7 +35,6 @@ RSpec.describe MypagesController, type: :controller do
       it "ユーザ以外が投稿した情報が取得できる" do
         date = @other_post.updated_at.to_date
         expect(assigns[:posts_by_date]).to include { { date: @other_post } }
-
       end
     end
 
