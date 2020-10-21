@@ -39,7 +39,7 @@ PASS：password
 <br>
 
 ```
-Ruby 2.4.5
+Ruby 2.5.0
 Ruby on Rails 5.2.2
 
 ```
