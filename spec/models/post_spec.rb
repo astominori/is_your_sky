@@ -56,7 +56,7 @@ RSpec.describe Post, type: :model do
 
     context ":created_this_month" do
       it "今月投稿されたpostを取得する" do
-        posts = create_list(:post, 10, :post_lastweek )
+        posts = create_list(:post, 10, :post_lastweek)
         expect(Post.created_this_month).to eq(posts)
       end
 

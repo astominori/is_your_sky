@@ -31,7 +31,7 @@ FactoryBot.define do
     end
 
     trait :post_yesterday do
-      created_at { Date.today-1 }
+      created_at { Date.today - 1 }
     end
 
     trait :post_lastweek do

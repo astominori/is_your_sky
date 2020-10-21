@@ -33,15 +33,15 @@ RSpec.describe MypagesController, type: :controller do
       end
 
       it "ユーザ以外が投稿した情報が取得できる" do
-        date = @other_post.updated_at.to_date
-        expect(assigns[:posts_by_date]).to include { { date: @other_post } }
+        @other_post.updated_at.to_date
+        date = { date: @other_post }
+        expect(assigns[:posts_by_date]).to include { date }
       end
     end
 
     context "投稿済みの正しいユーザとして" do
       before do
-        @user_post = create(:post,
-                            user_id: @user.id)
+        @user_post = create(:post, user_id: @user.id)
         sign_in @user
         get :show
       end
@@ -55,13 +55,15 @@ RSpec.describe MypagesController, type: :controller do
       end
 
       it "posts_by_dateでユーザ以外が投稿した情報が取得できる" do
-        date = @other_post.updated_at.to_date
-        expect(assigns[:posts_by_date]).to include { { date: @other_post } }
+        @other_post.updated_at.to_date
+        date = { date: @other_post }
+        expect(assigns[:posts_by_date]).to include { date }
       end
 
       it "posts_by_dateでユーザが投稿していない情報は取得できない" do
-        date = @user_post.updated_at.to_date
-        expect(assigns[:posts_by_date]).to_not include { { date: @other_post } }
+        @other_post.updated_at.to_date
+        date = { date: @other_post }
+        expect(assigns[:posts_by_date]).to_not include { date }
       end
     end
 

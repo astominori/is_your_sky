@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: [:edit,:update,:destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   def check_cache_image
     require "google/cloud/vision"
 
-    #Vision APIの設定
+    # Vision APIの設定
     image_annotator = Google::Cloud::Vision.image_annotator do |config|
       if Rails.env.production?
         config.credentials = JSON.parse(ENV.fetch('GOOGLE_CREDENTIALS'))
@@ -14,12 +14,12 @@ class PostsController < ApplicationController
       end
     end
 
-    #キャッシュ情報を取得する
+    # キャッシュ情報を取得する
     image = params[:image_cache].path
-    #キャッシュをVision APIにレスポンスとして渡す。
+    # キャッシュをVision APIにレスポンスとして渡す。
     response = image_annotator.label_detection image: image
 
-    #labelを配列に入れる
+    # labelを配列に入れる
     label_list = []
     response.responses.each do |res|
       res.label_annotations.each do |label|
@@ -27,14 +27,10 @@ class PostsController < ApplicationController
       end
     end
 
-    #空の写真かを判定する
-    if label_list.include?("Sky")
-      @image_flag = false
-    else
-      @image_flag = true
-    end
+    # 空の写真かを判定する
+    @image_flag = label_list.include?("Sky") ? false : true
 
-    #labelの先頭3つをタグとして持ってくる
+    # labelの先頭3つをタグとして持ってくる
     if label_list.length >= 4
       @tag_list = label_list[0..3]
     else
@@ -108,18 +104,18 @@ class PostsController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:post).permit(:image, :text, :title, :image_cache, :remove_image )
-  end
-
-  def set_post
-    #ユーザが投稿していないpostのアクセスを拒否する
-    begin
-      @post = current_user.posts.find(params[:id])
-    rescue => e
-      logger.error e
-      flash[:alert] = "アクセスができない画面です"
-      redirect_to user_root_path
+    def post_params
+      params.require(:post).permit(:image, :text, :title, :image_cache, :remove_image)
     end
-  end
+
+    def set_post
+      # ユーザが投稿していないpostのアクセスを拒否する
+      begin
+        @post = current_user.posts.find(params[:id])
+      rescue => e
+        logger.error e
+        flash[:alert] = "アクセスができない画面です"
+        redirect_to user_root_path
+      end
+    end
 end

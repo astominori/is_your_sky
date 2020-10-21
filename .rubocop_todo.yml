@@ -69,34 +69,34 @@ Layout/HashAlignment:
 # Configuration parameters: Width, IgnoredPatterns.
 Layout/IndentationWidth:
   Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/posts_controller.rb'
-    - 'app/uploaders/image_uploader.rb'
-    - 'config/initializers/carrierwave.rb'
+#    - 'app/controllers/application_controller.rb'
+#    - 'app/controllers/posts_controller.rb'
+#    - 'app/uploaders/image_uploader.rb'
+#    - 'config/initializers/carrierwave.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Layout/InitialIndentation:
   Exclude:
-    - 'db/seeds/development.rb'
-    - 'db/seeds/production.rb'
+#    - 'db/seeds/development.rb'
+#    - 'db/seeds/production.rb'
 
 # Offense count: 32
 # Cop supports --auto-correct.
 # Configuration parameters: AllowDoxygenCommentStyle, AllowGemfileRubyComment.
 Layout/LeadingCommentSpace:
   Exclude:
-    - 'Gemfile'
-    - 'app/controllers/posts_controller.rb'
-    - 'app/controllers/users/registrations_controller.rb'
-    - 'app/models/post.rb'
-    - 'app/uploaders/image_uploader.rb'
-    - 'config/environments/development.rb'
-    - 'config/environments/production.rb'
-    - 'config/initializers/devise.rb'
-    - 'db/seeds/development.rb'
-    - 'db/seeds/production.rb'
-    - 'spec/rails_helper.rb'
+#    - 'Gemfile'
+#    - 'app/controllers/posts_controller.rb'
+#    - 'app/controllers/users/registrations_controller.rb'
+#    - 'app/models/post.rb'
+#    - 'app/uploaders/image_uploader.rb'
+#    - 'config/environments/development.rb'
+#    - 'config/environments/production.rb'
+#    - 'config/initializers/devise.rb'
+#    - 'db/seeds/development.rb'
+#    - 'db/seeds/production.rb'
+#    - 'spec/rails_helper.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -104,18 +104,18 @@ Layout/LeadingCommentSpace:
 # SupportedStyles: symmetrical, new_line, same_line
 Layout/MultilineMethodCallBraceLayout:
   Exclude:
-    - 'spec/models/post_spec.rb'
-    - 'spec/models/user_spec.rb'
+#    - 'spec/models/post_spec.rb'
+#    - 'spec/models/user_spec.rb'
 
 # Offense count: 14
 # Cop supports --auto-correct.
 Layout/SpaceAfterComma:
   Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/posts_controller.rb'
-    - 'config/routes.rb'
-    - 'db/seeds/development.rb'
-    - 'db/seeds/production.rb'
+#    - 'app/controllers/application_controller.rb'
+#    - 'app/controllers/posts_controller.rb'
+#    - 'config/routes.rb'
+#    - 'db/seeds/development.rb'
+#    - 'db/seeds/production.rb'
 
 # Offense count: 5
 # Cop supports --auto-correct.
@@ -123,11 +123,11 @@ Layout/SpaceAfterComma:
 # SupportedStylesForExponentOperator: space, no_space
 Layout/SpaceAroundOperators:
   Exclude:
-    - 'app/models/user.rb'
-    - 'config/initializers/carrierwave.rb'
-    - 'db/seeds/development.rb'
-    - 'db/seeds/production.rb'
-    - 'spec/factories/posts.rb'
+#    - 'app/models/user.rb'
+#    - 'config/initializers/carrierwave.rb'
+#    - 'db/seeds/development.rb'
+#    - 'db/seeds/production.rb'
+#    - 'spec/factories/posts.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -135,7 +135,7 @@ Layout/SpaceAroundOperators:
 # SupportedStyles: require_no_space, require_space
 Layout/SpaceInLambdaLiteral:
   Exclude:
-    - 'app/models/post.rb'
+#    - 'app/models/post.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -144,7 +144,7 @@ Layout/SpaceInLambdaLiteral:
 # SupportedStylesForEmptyBrackets: space, no_space
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
-    - 'config/environments/production.rb'
+#    - 'config/environments/production.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -152,33 +152,33 @@ Layout/SpaceInsideArrayLiteralBrackets:
 # SupportedStyles: space, no_space
 Layout/SpaceInsideParens:
   Exclude:
-    - 'app/controllers/posts_controller.rb'
-    - 'app/models/post.rb'
-    - 'spec/models/post_spec.rb'
+#    - 'app/controllers/posts_controller.rb'
+#    - 'app/models/post.rb'
+#    - 'spec/models/post_spec.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.
 Layout/TrailingWhitespace:
   Exclude:
-    - 'db/seeds/development.rb'
+#    - 'db/seeds/development.rb'
 
 # Offense count: 3
 Lint/AmbiguousBlockAssociation:
   Exclude:
-    - 'spec/controllers/mypages_controller_spec.rb'
+#    - 'spec/controllers/mypages_controller_spec.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods, IgnoreNotImplementedMethods.
 Lint/UnusedMethodArgument:
   Exclude:
-    - 'app/uploaders/image_uploader.rb'
+#    - 'app/uploaders/image_uploader.rb'
 
 # Offense count: 3
 Lint/UselessAssignment:
   Exclude:
-    - 'spec/controllers/mypages_controller_spec.rb'
+#    - 'spec/controllers/mypages_controller_spec.rb'
 
 # Offense count: 5
 # Configuration parameters: IgnoredMethods.

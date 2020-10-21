@@ -36,33 +36,33 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-#css実装、bootstrap,jquery
+# css実装、bootstrap,jquery
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'mini_racer'
-#pagination実装、kaminari
+# pagination実装、kaminari
 gem 'kaminari'
-#日本語化 i18n
+# 日本語化 i18n
 gem 'rails-i18n'
-#画像操作 carrierwave 編集 mini_magick
+# 画像操作 carrierwave 編集 mini_magick
 gem "carrierwave"
 gem 'mini_magick'
-#画像をAWS S3にいれる fog-aws
+# 画像をAWS S3にいれる fog-aws
 gem 'fog-aws'
-#環境変数の設定 doten-rails
+# 環境変数の設定 doten-rails
 gem 'dotenv-rails'
-#テストケースの作成 faker
+# テストケースの作成 faker
 gem 'faker'
-#認証機能を設定する
+# 認証機能を設定する
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 # slimを使用する html2slim slim-rails
 gem 'html2slim'
 gem 'slim-rails'
-#jqueryを使用する jquery-ui-rails
+# jqueryを使用する jquery-ui-rails
 gem 'jquery-ui-rails'
-#画像解析のVision APIを使用するためのgem
+# 画像解析のVision APIを使用するためのgem
 gem 'google-cloud-vision'
 
 group :development, :test do

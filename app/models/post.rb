@@ -27,19 +27,19 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tag_relations
   scope :created_today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
   scope :created_this_month, -> { where("created_at >= ?", Time.zone.now.beginning_of_month) }
-  scope :find_tags_posts, -> (id) { joins(:tags).where( tags: { id: id }) }
+  scope :find_tags_posts, ->(id) { joins(:tags).where(tags: { id: id }) }
 
   def save_tags(tags)
     current_tags = self.tags.pluck(:tag) unless self.tags.nil?
     old_tags = current_tags - tags
     new_tags = tags - current_tags
 
-    #古いタグを削除する
+    # 古いタグを削除する
     old_tags.each do |old_tag|
       self.tags.delete Tag.find_by(tag: old_tag)
     end
 
-    #新しいタグをつける
+    # 新しいタグをつける
     new_tags.each do |new_tag|
       post_tag = Tag.find_or_create_by(tag: new_tag)
       self.tags << post_tag
