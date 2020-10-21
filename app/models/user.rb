@@ -40,7 +40,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
-         :omniauthable, omniauth_providers: [:facebook, :twitter], :timeoutable
+         :omniauthable, omniauth_providers: [:facebook, :twitter]
   has_many :posts
   validates :username, presence: true
   mount_uploader :avatar, AvatarUploader
