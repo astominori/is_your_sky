@@ -28,16 +28,12 @@ class PostsController < ApplicationController
     end
 
     # 空の写真かを判定する
-    @image_flag = label_list.include?("Sky") ? false : true
+    @no_sky_image = !label_list.include?("Sky")
 
     # labelの先頭3つをタグとして持ってくる
-    if label_list.length >= 4
-      @tag_list = label_list[0..3]
-    else
-      @tag_list = label_list
-    end
+    @tag_list = label_list[0..3]
 
-    @data = { tag_list: @tag_list, image_flag: @image_flag }
+    @data = { tag_list: @tag_list, no_sky_image: @no_sky_image }
     respond_to do |format|
       format.html
       format.json
@@ -46,7 +42,7 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build
-    @image_flag = false
+    @no_sky_image = false
   end
 
   def create
@@ -99,7 +95,7 @@ class PostsController < ApplicationController
 
   def tags_search
     @tag = Tag.find(params[:t_id])
-    @tags_posts = Post.find_tags_posts(params[:t_id])
+    @tags_posts = @tag.posts
   end
 
   private

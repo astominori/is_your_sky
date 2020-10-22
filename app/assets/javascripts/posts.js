@@ -20,9 +20,9 @@ $( document ).on('turbolinks:load', function() {
           contentType: false,
         }).done(function(data){
            var tag_list = data.data.tag_list
-           var image_flag = data.data.image_flag
+           var no_sky_image = data.data.no_sky_image
 
-           if(image_flag == true){
+           if(no_sky_image == true){
              //アラートを表示する
              $('#image_isnot_sky').removeClass('hidden');
              //タグを削除する
