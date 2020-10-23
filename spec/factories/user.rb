@@ -3,7 +3,7 @@ FactoryBot.define do
     username { "test" }
     sequence(:email) { |n| "example-#{n}@mail.com" }
     password { "password" }
-    confirmed_at { Date.today }
+    confirmed_at { Time.zone.today }
 
     trait :other_user do
       username { "other_user" }

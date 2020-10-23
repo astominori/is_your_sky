@@ -27,19 +27,19 @@ FactoryBot.define do
     user
 
     trait :post_today do
-      created_at { Date.today }
+      created_at { Time.zone.today }
     end
 
     trait :post_yesterday do
-      created_at { Date.today - 1 }
+      created_at { Time.zone.today - 1 }
     end
 
     trait :post_lastweek do
-      created_at { (Date.today - 1.week).beginning_of_week }
+      created_at { (Time.zone.today - 1.week).beginning_of_week }
     end
 
     trait :post_lastmonth do
-      created_at { (Date.today - 1.month).beginning_of_week }
+      created_at { (Time.zone.today - 1.month).beginning_of_week }
     end
   end
 

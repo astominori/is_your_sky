@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   describe "#show" do
-    let(:user){ create(:user) }
-    let(:post){ create(:post, user_id: user.id) }
+    let(:user) { create(:user) }
+    let(:post) { create(:post, user_id: user.id) }
 
     before do
       user.confirm
@@ -21,7 +21,8 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context "投稿していない他のユーザとして" do
-      let(:other_user){ create(:user, :other_user) }
+      let(:other_user) { create(:user, :other_user) }
+
       before do
         other_user.confirm
         sign_in other_user
@@ -43,7 +44,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe "#create" do
     context "正しいユーザとして" do
-      let(:user){ create(:user) }
+      let(:user) { create(:user) }
 
       before do
         user.confirm
@@ -65,7 +66,7 @@ RSpec.describe PostsController, type: :controller do
           sign_in user
           expect {
             get :create, params: { post: post_params }
-          }.to_not change(user.posts, :count)
+          }.not_to change(user.posts, :count)
         end
       end
     end
@@ -80,8 +81,9 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "#edit" do
-    let(:user){ create(:user) }
-    let(:post){ create(:post, user_id: user.id) }
+    let(:user) { create(:user) }
+    let(:post) { create(:post, user_id: user.id) }
+
     before do
       user.confirm
     end
@@ -107,7 +109,8 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context "投稿していないユーザとして" do
-      let(:other_user){ create(:user, :other_user) }
+      let(:other_user) { create(:user, :other_user) }
+
       before do
         other_user.confirm
       end
@@ -128,8 +131,9 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "#update" do
-    let(:post){ create(:post, user_id: user.id) }
-    let(:user){ create(:user) }
+    let(:post) { create(:post, user_id: user.id) }
+    let(:user) { create(:user) }
+
     before do
       user.confirm
     end
@@ -148,7 +152,8 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context "投稿していないのユーザとして" do
-      let(:other_user){ create(:user, :other_user) }
+      let(:other_user) { create(:user, :other_user) }
+
       before do
         other_user.confirm
       end
@@ -180,8 +185,9 @@ RSpec.describe PostsController, type: :controller do
 
   describe "#todays_posts" do
     context "正しいユーザとして" do
-      let(:user){ create(:user) }
-      let(:posts){ create_list(:post, 5, user_id: user.id) }
+      let(:user) { create(:user) }
+      let(:posts) { create_list(:post, 5, user_id: user.id) }
+
       before do
         user.confirm
       end

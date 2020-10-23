@@ -79,4 +79,8 @@ RSpec/DescribedClass:
 
 #Rspecの空のグループを許容する
 RSpec/EmptyExampleGroup:
-    Enabled: false
+  Enabled: false
+
+#Rspecの１テストの行の長さの許容値を8に変更
+RSpec/ExampleLength:
+  Max: 8
