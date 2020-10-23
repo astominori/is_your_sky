@@ -206,9 +206,9 @@ Metrics/PerceivedComplexity:
 # Prefixes: when, with, without
 RSpec/ContextWording:
   Exclude:
-    - 'spec/controllers/mypages_controller_spec.rb'
-    - 'spec/controllers/posts_controller_spec.rb'
-    - 'spec/models/post_spec.rb'
+#    - 'spec/controllers/mypages_controller_spec.rb'
+#    - 'spec/controllers/posts_controller_spec.rb'
+#    - 'spec/models/post_spec.rb'
 
 # Offense count: 5
 # Cop supports --auto-correct.
@@ -216,30 +216,30 @@ RSpec/ContextWording:
 # SupportedStyles: described_class, explicit
 RSpec/DescribedClass:
   Exclude:
-    - 'spec/models/post_spec.rb'
+#    - 'spec/models/post_spec.rb'
 
 # Offense count: 4
 # Configuration parameters: CustomIncludeMethods.
 RSpec/EmptyExampleGroup:
   Exclude:
-    - 'spec/controllers/omniauth_callbacks_controller_spec.rb'
-    - 'spec/helpers/omniauth_callbacks_helper_spec.rb'
-    - 'spec/models/post_tag_relation_spec.rb'
-    - 'spec/models/tag_spec.rb'
+#    - 'spec/controllers/omniauth_callbacks_controller_spec.rb'
+#    - 'spec/helpers/omniauth_callbacks_helper_spec.rb'
+#    - 'spec/models/post_tag_relation_spec.rb'
+#    - 'spec/models/tag_spec.rb'
 
 # Offense count: 2
 # Configuration parameters: Max.
 RSpec/ExampleLength:
   Exclude:
-    - 'spec/controllers/posts_controller_spec.rb'
+#    - 'spec/controllers/posts_controller_spec.rb'
 
 # Offense count: 64
 # Configuration parameters: AssignmentOnly.
 RSpec/InstanceVariable:
   Exclude:
-    - 'spec/controllers/mypages_controller_spec.rb'
-    - 'spec/controllers/posts_controller_spec.rb'
-    - 'spec/models/post_spec.rb'
+#    - 'spec/controllers/mypages_controller_spec.rb'
+#    - 'spec/controllers/posts_controller_spec.rb'
+#    - 'spec/models/post_spec.rb'
 
 # Offense count: 2
 RSpec/NestedGroups:
@@ -251,8 +251,8 @@ RSpec/NestedGroups:
 # SupportedStyles: not_to, to_not
 RSpec/NotToNot:
   Exclude:
-    - 'spec/controllers/mypages_controller_spec.rb'
-    - 'spec/controllers/posts_controller_spec.rb'
+#    - 'spec/controllers/mypages_controller_spec.rb'
+#    - 'spec/controllers/posts_controller_spec.rb'
 
 # Offense count: 3
 # Configuration parameters: Database, Include.
@@ -260,17 +260,17 @@ RSpec/NotToNot:
 # Include: db/migrate/*.rb
 Rails/BulkChangeTable:
   Exclude:
-    - 'db/migrate/20200917120508_devise_create_users.rb'
-    - 'db/migrate/20200918012818_add_columns_to_users.rb'
-    - 'db/migrate/20200922054002_add_uid_to_users.rb'
+#    - 'db/migrate/20200917120508_devise_create_users.rb'
+#    - 'db/migrate/20200918012818_add_columns_to_users.rb'
+#    - 'db/migrate/20200922054002_add_uid_to_users.rb'
 
 # Offense count: 5
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: strict, flexible
 Rails/Date:
   Exclude:
-    - 'spec/factories/posts.rb'
-    - 'spec/factories/user.rb'
+#    - 'spec/factories/posts.rb'
+#    - 'spec/factories/user.rb'
 
 # Offense count: 22
 # Configuration parameters: EnforcedStyle.

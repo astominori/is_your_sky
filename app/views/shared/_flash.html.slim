@@ -1,6 +1,6 @@
 - if flash.any?
   - flash.each do |name, message|
-    unless message == true
+    unless message == "true"
       div[class="alert alert-#{ name == 'notice' ? 'success' : 'warning' } alert-dismissible" id= "flash" role="alert"]
         button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
           span[aria-hidden="true"]

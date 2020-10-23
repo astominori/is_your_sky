@@ -64,7 +64,19 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
-# rpsecでAmbiguousBlockAssociationは見ないようにする
+# RspecでAmbiguousBlockAssociationは見ないようにする
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - "spec/**/*"
+
+# Rspecで日本語記法で書くと必ずひっかかるため
+RSpec/ContextWording:
+  Enabled: false
+
+#クラス名を使う
+RSpec/DescribedClass:
+  EnforcedStyle: explicit
+
+#Rspecの空のグループを許容する
+RSpec/EmptyExampleGroup:
+    Enabled: false
