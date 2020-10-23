@@ -7,6 +7,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_tags_on_tag  (tag) UNIQUE
+#
 require 'rails_helper'
 
 RSpec.describe Tag, type: :model do

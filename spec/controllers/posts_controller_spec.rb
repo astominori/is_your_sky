@@ -98,7 +98,7 @@ RSpec.describe PostsController, type: :controller do
       it "200レスポンスを返す" do
         sign_in user
         get :edit, params: { id: post.id }
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it "editテンプレートを描画する" do

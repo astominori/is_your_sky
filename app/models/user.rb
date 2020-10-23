@@ -41,7 +41,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :timeoutable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
-  has_many :posts
+  has_many :posts, dependent: :destroy
   validates :username, presence: true
   mount_uploader :avatar, AvatarUploader
 
