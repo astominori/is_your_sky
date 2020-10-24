@@ -329,7 +329,7 @@ Style/BlockComments:
 # IgnoredMethods: lambda, proc, it
 Style/BlockDelimiters:
   Exclude:
-    - 'spec/controllers/posts_controller_spec.rb'
+#    - 'spec/controllers/posts_controller_spec.rb'
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -337,12 +337,12 @@ Style/BlockDelimiters:
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'app/controllers/users/confirmations_controller.rb'
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'app/controllers/users/passwords_controller.rb'
-    - 'app/controllers/users/registrations_controller.rb'
-    - 'app/controllers/users/sessions_controller.rb'
-    - 'app/controllers/users/unlocks_controller.rb'
+#    - 'app/controllers/users/confirmations_controller.rb'
+#    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+#    - 'app/controllers/users/passwords_controller.rb'
+#    - 'app/controllers/users/registrations_controller.rb'
+#    - 'app/controllers/users/sessions_controller.rb'
+#    - 'app/controllers/users/unlocks_controller.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -350,7 +350,7 @@ Style/ClassAndModuleChildren:
 # SupportedStyles: assign_to_condition, assign_inside_condition
 Style/ConditionalAssignment:
   Exclude:
-    - 'app/controllers/posts_controller.rb'
+#    - 'app/controllers/posts_controller.rb'
 
 # Offense count: 22
 Style/Documentation:

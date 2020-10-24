@@ -84,3 +84,12 @@ RSpec/EmptyExampleGroup:
 #Rspecの１テストの行の長さの許容値を8に変更
 RSpec/ExampleLength:
   Max: 8
+
+#Rspec上における{}の複数行を許容する
+Style/BlockDelimiters:
+   Exclude:
+     - "spec/**/*"
+
+#deviseがこの書き方をつかっているため許容する
+Style/ClassAndModuleChildren:
+  Enabled: false
