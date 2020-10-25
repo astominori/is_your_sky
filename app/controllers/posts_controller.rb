@@ -106,12 +106,10 @@ class PostsController < ApplicationController
 
     def set_post
       # ユーザが投稿していないpostのアクセスを拒否する
-      begin
-        @post = current_user.posts.find(params[:id])
-      rescue => e
-        logger.error e
-        flash[:alert] = "アクセスができない画面です"
-        redirect_to user_root_path
-      end
+      @post = current_user.posts.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      logger.error e
+      flash[:alert] = "アクセスができない画面です"
+      redirect_to user_root_path
     end
 end

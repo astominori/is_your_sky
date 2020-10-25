@@ -10,7 +10,7 @@ $( document ).on('turbolinks:load', function() {
       if (appear == false) {
         appear = true;
         pagetop.stop().animate({
-          'right': '-10px' //右から0pxの位置に
+          'right': '5px' //右から0pxの位置に
         }, 300); //0.3秒かけて現れる
       }
     } else {

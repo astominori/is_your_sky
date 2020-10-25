@@ -93,3 +93,11 @@ Style/BlockDelimiters:
 #deviseがこの書き方をつかっているため許容する
 Style/ClassAndModuleChildren:
   Enabled: false
+
+#空のメソッドを2行で書いてもいいようにする
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+#if unlessは2行以上で書いた方がわかりやすい
+Style/IfUnlessModifier:
+  Enabled: false
