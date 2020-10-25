@@ -362,7 +362,7 @@ Style/Documentation:
 # SupportedStyles: compact, expanded
 Style/EmptyMethod:
   Exclude:
-    - 'app/controllers/home_controller.rb'
+#    - 'app/controllers/home_controller.rb'
 
 # Offense count: 69
 # Cop supports --auto-correct.
@@ -382,24 +382,24 @@ Style/HashSyntax:
 # Cop supports --auto-correct.
 Style/IfUnlessModifier:
   Exclude:
-    - 'app/controllers/posts_controller.rb'
-    - 'config/routes.rb'
-    - 'spec/spec_helper.rb'
+#    - 'app/controllers/posts_controller.rb'
+#    - 'config/routes.rb'
+#    - 'spec/spec_helper.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredDelimiters.
 Style/PercentLiteralDelimiters:
   Exclude:
-    - 'Gemfile'
-    - 'app/uploaders/avatar_uploader.rb'
-    - 'app/uploaders/image_uploader.rb'
+#    - 'Gemfile'
+#    - 'app/uploaders/avatar_uploader.rb'
+#    - 'app/uploaders/image_uploader.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/RedundantBegin:
   Exclude:
-    - 'app/controllers/posts_controller.rb'
+#    - 'app/controllers/posts_controller.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -407,7 +407,7 @@ Style/RedundantBegin:
 # SupportedStyles: implicit, explicit
 Style/RescueStandardError:
   Exclude:
-    - 'app/controllers/posts_controller.rb'
+#    - 'app/controllers/posts_controller.rb'
 
 # Offense count: 239
 # Cop supports --auto-correct.
