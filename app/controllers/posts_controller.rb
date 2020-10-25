@@ -68,7 +68,7 @@ class PostsController < ApplicationController
       tag_list = params[:tag_list].split(",")
     end
     if @post.update(post_params)
-      @post.save_tags(tags) if tag_list
+      @post.save_tags(tag_list) if tag_list
       flash[:notice] = "更新が完了しました"
       redirect_to user_root_path
     else
